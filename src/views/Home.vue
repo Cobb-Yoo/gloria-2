@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col>
-        <v-btn @click="addMember" />
+        <v-btn @click="setMemberList({ name })" />
         <v-card>
           <v-card-title> 테스트 </v-card-title>
           <v-card-text v-for="i in members" :v-model="i" :key="i"></v-card-text>
@@ -24,12 +24,6 @@ export default {
   },
   methods: {
     ...mapActions["setMemberList"],
-    addMember() {
-      let data = {
-        name: "홍길동",
-      };
-      this.setMemberList(data);
-    },
   },
   computed: {
     ...mapGetters[{ members: "getMemberList" }],
