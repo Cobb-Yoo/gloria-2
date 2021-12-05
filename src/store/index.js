@@ -21,7 +21,7 @@ export default new Vuex.Store({
       이름
     */
     //사용자목록
-    memberList: null,
+    memberList: [],
 
     /*
       헌금id
@@ -29,11 +29,14 @@ export default new Vuex.Store({
     */
     //헌금목록
     offeringList: null,
+
+    id: 0,
   },
   mutations: {
     //테스트를 위한 초기 메서드
-    setStateMemberList({ state }, payload) {
-      state.memberList += payload;
+    setStateMemberList(state, payload) {
+      console.log(payload);
+      state.memberList.push(payload);
     },
 
     //테스트를 위한 초기 메서드
@@ -45,8 +48,15 @@ export default new Vuex.Store({
   actions: {
     //테스트 성도 추가 메서드
     //나중에는 교회 id까지 받아야함...
-    setMemberList({ commit }, payload) {
-      commit("setStateMemberList", payload);
+    setMemberList({ commit, state }, payload) {
+      state.id = state.id + 1;
+
+      let data = {
+        id: state.id,
+        name: payload.data,
+      };
+
+      commit("setStateMemberList", data);
     },
     setMembersOfferingList({ commit }, payload) {
       commit("setStateMembersOfferingList", payload);

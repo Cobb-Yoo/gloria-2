@@ -2,10 +2,14 @@
   <v-container>
     <v-row>
       <v-col>
-        <v-btn @click="setMemberList({ name })" />
+        <v-btn @click="setMemberList({ data })" />
         <v-card>
           <v-card-title> 테스트 </v-card-title>
-          <v-card-text v-for="i in members" :v-model="i" :key="i"></v-card-text>
+          <div
+            v-for="member in members"
+            :key="member.id"
+            :v-model="member.name"
+          ></div>
         </v-card>
       </v-col>
     </v-row>
@@ -19,14 +23,14 @@ export default {
   name: "Home",
   data() {
     return {
-      //data: null,
+      data: "이름",
     };
   },
   methods: {
-    ...mapActions["setMemberList"],
+    ...mapActions(["setMemberList"]),
   },
   computed: {
-    ...mapGetters[{ members: "getMemberList" }],
+    ...mapGetters({ members: "getMemberList" }),
   },
   components: {},
 };
