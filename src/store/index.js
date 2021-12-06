@@ -53,7 +53,8 @@ export default new Vuex.Store({
 
       let data = {
         id: state.id,
-        name: payload.data,
+        name: payload.name,
+        offering: payload.offering,
       };
 
       commit("setStateMemberList", data);
