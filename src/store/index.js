@@ -35,7 +35,6 @@ export default new Vuex.Store({
   mutations: {
     //테스트를 위한 초기 메서드
     setStateMemberList(state, payload) {
-      console.log(payload);
       state.memberList.push(payload);
     },
 
@@ -51,11 +50,15 @@ export default new Vuex.Store({
     setMemberList({ commit, state }, payload) {
       state.id = state.id + 1;
 
-      let data = {
+      const data = {
         id: state.id,
         name: payload.name,
+        type: payload.type,
         offering: payload.offering,
+        date: payload.date,
       };
+
+      console.log(payload);
 
       commit("setStateMemberList", data);
     },
