@@ -28,7 +28,7 @@ export default new Vuex.Store({
       헌금명
     */
     //헌금목록
-    offeringList: null,
+    offeringList: [],
 
     id: 0,
   },
@@ -42,7 +42,14 @@ export default new Vuex.Store({
     setStateMembersOfferingList() {},
 
     //테스트를 위한 초기 메서드
-    setStateOfferingList() {},
+    setStateOfferingList(state, payload) {
+      const data = {
+        id: state.offeringList.length,
+        name: payload,
+      };
+      state.offeringList.push(data);
+      console.log(state.offeringList);
+    },
   },
   actions: {
     //테스트 성도 추가 메서드
@@ -72,6 +79,9 @@ export default new Vuex.Store({
   getters: {
     getMemberList: (state) => {
       return state.memberList;
+    },
+    getOfferingList: (state) => {
+      return state.offeringList;
     },
   },
   modules: {},

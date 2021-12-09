@@ -13,12 +13,17 @@
         <v-row>
           <v-col cols="10">
             <v-chip-group active-class="deep-purple--text text--accent-4">
-              <v-chip v-for="i in typeList" :key="i" @click="clickType(i)">
-                {{ i }}
+              <v-chip
+                v-for="i in typeList"
+                :key="i.id"
+                @click="clickType(i.name)"
+              >
+                {{ i.name }}
               </v-chip>
             </v-chip-group>
           </v-col>
         </v-row>
+
         <v-row>
           <v-col cols="10">
             <v-chip-group active-class="deep-purple--text text--accent-4">
@@ -44,6 +49,7 @@
               <td>헌금</td>
               <td>금액</td>
               <td>날짜</td>
+              <td></td>
             </tr>
           </thead>
           <tbody>
@@ -54,7 +60,7 @@
               <td>{{ member.offering }}</td>
               <td>{{ member.date }}</td>
               <td>
-                <v-btn @click="editting(member.id)"> </v-btn>
+                <v-btn @click="editting(member.id)"> 수정 </v-btn>
               </td>
             </tr>
           </tbody>
@@ -120,7 +126,6 @@ export default {
       dialog: false,
       dialogData: [],
       offeringList: ["1000", "2000", "5000", "10000", "50000", "100000"],
-      typeList: ["십일조", "감사헌금", "주정헌금", "건축헌금"],
     };
   },
   methods: {
@@ -159,11 +164,11 @@ export default {
       this.dialogData = this.members[payload - 1];
       this.dialog = true;
     },
+    created() {},
   },
   computed: {
-    ...mapGetters({ members: "getMemberList" }),
+    ...mapGetters({ members: "getMemberList", typeList: "getOfferingList" }),
   },
-  components: {},
 };
 </script>
 

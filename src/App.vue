@@ -62,7 +62,8 @@ export default {
     drawer: true,
     items: [
       { title: "Home", icon: "mdi-view-dashboard", to: "/" },
-      { title: "헌금관리", icon: "mdi-image", to: "/about" },
+      { title: "헌금관리", icon: "mdi-image", to: "/manage/offering" },
+      { title: "성도관리", icon: "mdi-image", to: "/manage/member" },
       { title: "보고서", icon: "mdi-help-box" },
       { title: "교인관리", icon: "mdi-help-box" },
     ],
