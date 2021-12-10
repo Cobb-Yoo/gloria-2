@@ -14,6 +14,11 @@ const routes = [
     name: "Offering",
     component: () => import("../views/manage/Offering.vue"),
   },
+  {
+    path: "/manage/member",
+    name: "Member",
+    component: () => import("../views/manage/Member.vue"),
+  },
 ];
 
 const router = new VueRouter({
