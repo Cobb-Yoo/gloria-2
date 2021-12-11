@@ -63,9 +63,10 @@ export default {
     items: [
       { title: "Home", icon: "mdi-view-dashboard", to: "/" },
       { title: "헌금관리", icon: "mdi-image", to: "/manage/offering" },
-      { title: "성도관리", icon: "mdi-image", to: "/manage/member" },
+      { title: "성도관리", icon: "mdi-image", to: "/manage/saint" },
+      { title: "지출관리", icon: "mdi-help-box" },
+      { title: "기부금영수증", icon: "mdi-help-box" },
       { title: "보고서", icon: "mdi-help-box" },
-      { title: "교인관리", icon: "mdi-help-box" },
     ],
     right: null,
   }),

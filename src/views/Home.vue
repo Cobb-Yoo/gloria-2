@@ -167,7 +167,7 @@ export default {
     created() {},
   },
   computed: {
-    ...mapGetters({ members: "getMemberList", typeList: "getOfferingList" }),
+    ...mapGetters({ members: "getSaintList", typeList: "getOfferingList" }),
   },
 };
 </script>
