@@ -83,6 +83,9 @@ export default new Vuex.Store({
     getOfferingList: (state) => {
       return state.offeringList;
     },
+    getSaintList: (state) => {
+      return state.saintList;
+    },
   },
   modules: {},
 });
