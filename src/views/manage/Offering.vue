@@ -20,12 +20,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="type in typeList" :key="type.id">
-              <td>{{ type.id }}</td>
-              <td>{{ type.name }}</td>
+            <tr v-for="offering in offeringList" :key="offering.id">
+              <td>{{ offering.id }}</td>
+              <td>{{ offering.name }}</td>
 
               <td>
-                <v-btn @click="editting(type.id)"> 수정 </v-btn>
+                <v-btn @click="editting(offering)"> 수정 </v-btn>
               </td>
             </tr>
           </tbody>
@@ -93,16 +93,12 @@ export default {
       this.setOfferingList(this.offeringName);
     },
     editting(payload) {
-      this.dialogData = {
-        id: this.typeList[payload].id,
-        name: this.typeList[payload].name,
-      };
-      console.log(this.dialogData);
+      this.dialogData = payload;
       this.dialog = true;
     },
   },
   computed: {
-    ...mapGetters({ typeList: "getOfferingList" }),
+    ...mapGetters({ offeringList: "getOfferingList" }),
   },
 };
 </script>

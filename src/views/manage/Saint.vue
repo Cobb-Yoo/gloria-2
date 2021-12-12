@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   data() {
@@ -45,7 +45,10 @@ export default {
     };
   },
   methods: {
-    check() {},
+    ...mapActions(["setSaintList"]),
+    check() {
+      this.setSaintList(this.saintName);
+    },
   },
   computed: {
     ...mapGetters({ saintList: "getSaintList" }),

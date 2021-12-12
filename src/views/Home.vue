@@ -14,11 +14,11 @@
           <v-col cols="10">
             <v-chip-group active-class="deep-purple--text text--accent-4">
               <v-chip
-                v-for="i in typeList"
-                :key="i.id"
-                @click="clickType(i.name)"
+                v-for="offeringName in offeringNameList"
+                :key="offeringName.id"
+                @click="clickType(offeringName.name)"
               >
-                {{ i.name }}
+                {{ offeringName.name }}
               </v-chip>
             </v-chip-group>
           </v-col>
@@ -28,11 +28,11 @@
           <v-col cols="10">
             <v-chip-group active-class="deep-purple--text text--accent-4">
               <v-chip
-                v-for="i in offeringList"
-                :key="i"
-                @click="clickOffering(i)"
+                v-for="offeringValue in offeringValueList"
+                :key="offeringValue"
+                @click="clickOffering(offeringValue)"
               >
-                {{ i }}
+                {{ offeringValue }}
               </v-chip>
             </v-chip-group>
           </v-col>
@@ -53,14 +53,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="member in members.slice().reverse()" :key="member.id">
-              <td>{{ member.id }}</td>
-              <td>{{ member.name }}</td>
-              <td>{{ member.type }}</td>
-              <td>{{ member.offering }}</td>
-              <td>{{ member.date }}</td>
+            <tr
+              v-for="saintsOffering in saintsOfferingList.slice().reverse()"
+              :key="saintsOffering.id"
+            >
+              <td>{{ saintsOffering.id }}</td>
+              <td>{{ saintsOffering.name }}</td>
+              <td>{{ saintsOffering.type }}</td>
+              <td>{{ saintsOffering.offering }}</td>
+              <td>{{ saintsOffering.date }}</td>
               <td>
-                <v-btn @click="editting(member.id)"> 수정 </v-btn>
+                <v-btn @click="editting(saintsOffering)"> 수정 </v-btn>
               </td>
             </tr>
           </tbody>
@@ -125,11 +128,11 @@ export default {
       type: "",
       dialog: false,
       dialogData: [],
-      offeringList: ["1000", "2000", "5000", "10000", "50000", "100000"],
+      offeringValueList: ["1000", "2000", "5000", "10000", "50000", "100000"],
     };
   },
   methods: {
-    ...mapActions(["setMemberList"]),
+    ...mapActions(["setSaintsOfferingList"]),
     check() {
       const today = new Date();
 
@@ -149,25 +152,31 @@ export default {
       if (payload.name == "" || payload.offering == "" || payload.type == "") {
         alert("뭔가 비었습니다");
       } else {
-        this.setMemberList(payload);
-        this.name = "가나다";
+        this.setSaintsOfferingList(payload);
+        this.name = "";
       }
     },
     clickOffering(payload) {
+      //입력 폼에 해당하는 금액을 셋팅
       this.offering = payload;
     },
     clickType(payload) {
+      //입력 폼에 해당하는 종류를 셋팅
       this.type = payload;
     },
     editting(payload) {
-      console.log(payload);
-      this.dialogData = this.members[payload - 1];
+      //수정 창 올리는거
       this.dialog = true;
+      this.dialogData = payload;
     },
     created() {},
   },
   computed: {
-    ...mapGetters({ members: "getSaintList", typeList: "getOfferingList" }),
+    ...mapGetters({
+      saintsOfferingList: "getSaintsOfferingList",
+      offeringNameList: "getOfferingList",
+      saintList: "getSaintList",
+    }),
   },
 };
 </script>

@@ -15,7 +15,7 @@ export default new Vuex.Store({
       날짜
     */
     //헌금목록
-    membersOfferingList: null,
+    saintsOfferingList: [],
 
     /*
       이름
@@ -34,27 +34,22 @@ export default new Vuex.Store({
   },
   mutations: {
     //테스트를 위한 초기 메서드
+    setStateOfferingList(state, payload) {
+      state.offeringList.push(payload);
+    },
+
+    //테스트를 위한 초기 메서드
+    setStateSaintsOfferingList(state, payload) {
+      state.saintsOfferingList.push(payload);
+    },
+
+    //테스트를 위한 초기 메서드
     setStateSaintList(state, payload) {
       state.saintList.push(payload);
     },
-
-    //테스트를 위한 초기 메서드
-    setStateMembersOfferingList() {},
-
-    //테스트를 위한 초기 메서드
-    setStateOfferingList(state, payload) {
-      const data = {
-        id: state.offeringList.length,
-        name: payload,
-      };
-      state.offeringList.push(data);
-      console.log(state.offeringList);
-    },
   },
   actions: {
-    //테스트 성도 추가 메서드
-    //나중에는 교회 id까지 받아야함...
-    setSaintList({ commit, state }, payload) {
+    setSaintsOfferingList({ commit, state }, payload) {
       state.id = state.id + 1;
 
       const data = {
@@ -65,25 +60,37 @@ export default new Vuex.Store({
         date: payload.date,
       };
 
-      console.log(payload);
+      //console.log(payload);
 
+      commit("setStateSaintsOfferingList", data);
+    },
+    setOfferingList({ commit, state }, payload) {
+      const data = {
+        id: state.offeringList.length,
+        name: payload,
+      };
+      commit("setStateOfferingList", data);
+    },
+    setSaintList({ commit, state }, payload) {
+      const data = {
+        id: state.saintList.length,
+        name: payload,
+      };
       commit("setStateSaintList", data);
-    },
-    setMembersOfferingList({ commit }, payload) {
-      commit("setStateMembersOfferingList", payload);
-    },
-    setOfferingList({ commit }, payload) {
-      commit("setStateOfferingList", payload);
     },
   },
   getters: {
-    getSaintList: (state) => {
-      return state.saintList;
+    getSaintsOfferingList: (state) => {
+      //home에서 사용함
+      return state.saintsOfferingList;
     },
     getOfferingList: (state) => {
+      //manage/offering 에서 사용함
+
       return state.offeringList;
     },
     getSaintList: (state) => {
+      //manage/saint 에서 사용함
       return state.saintList;
     },
   },
