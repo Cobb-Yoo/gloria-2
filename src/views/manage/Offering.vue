@@ -7,7 +7,11 @@
           <v-card-subtitle> 헌금 리스트에 추가합니다 </v-card-subtitle>
         </v-card>
 
-        <v-text-field label="헌금 이름" v-model="offeringName"></v-text-field>
+        <v-text-field
+          label="헌금 이름"
+          v-model="offeringName"
+          @keyup.enter="check()"
+        ></v-text-field>
 
         <v-btn @click="check()"> 추가하기 </v-btn>
 
@@ -91,6 +95,7 @@ export default {
     ...mapActions(["setOfferingList"]),
     check() {
       this.setOfferingList(this.offeringName);
+      this.offeringName = "";
     },
     editting(payload) {
       this.dialogData = payload;

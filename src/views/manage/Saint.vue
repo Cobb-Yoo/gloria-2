@@ -9,7 +9,11 @@
           </v-card-subtitle>
         </v-card>
 
-        <v-text-field label="이름" v-model="saintName"></v-text-field>
+        <v-text-field
+          label="이름"
+          v-model="saintName"
+          @keyup.enter="check()"
+        ></v-text-field>
 
         <v-btn @click="check()"> 추가하기 </v-btn>
 
@@ -48,6 +52,7 @@ export default {
     ...mapActions(["setSaintList"]),
     check() {
       this.setSaintList(this.saintName);
+      this.saintName = "";
     },
   },
   computed: {

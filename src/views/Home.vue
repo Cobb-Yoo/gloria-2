@@ -6,7 +6,14 @@
           <v-card-title> 헌금입력 </v-card-title>
         </v-card>
 
-        <v-text-field label="이름" v-model="name"></v-text-field>
+        <v-autocomplete
+          label="이름"
+          v-model="name"
+          :items="saintList"
+          item-text="name"
+          item-value="name"
+        >
+        </v-autocomplete>
         <v-text-field label="헌금" v-model="type"></v-text-field>
         <v-text-field label="금액" v-model="offering"></v-text-field>
 
