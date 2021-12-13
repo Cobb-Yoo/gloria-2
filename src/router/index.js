@@ -19,6 +19,11 @@ const routes = [
     name: "Saint",
     component: () => import("../views/manage/Saint.vue"),
   },
+  {
+    path: "/manage/expenditure",
+    name: "Saint",
+    component: () => import("../views/manage/Expenditure.vue"),
+  },
 ];
 
 const router = new VueRouter({

@@ -3,7 +3,7 @@
     <v-row justify="center">
       <v-col cols="8">
         <v-card>
-          <v-card-title> 성도 추가 </v-card-title>
+          <v-card-title> 성도 등록 </v-card-title>
           <v-card-subtitle>
             여기에 있는 성도에 대해서만 헌금입력이 가능합니다
           </v-card-subtitle>

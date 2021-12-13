@@ -30,6 +30,9 @@ export default new Vuex.Store({
     //헌금목록
     offeringList: [],
 
+    expenRootList: [],
+    expenLeafList: [],
+
     id: 0,
   },
   mutations: {
@@ -46,6 +49,14 @@ export default new Vuex.Store({
     //테스트를 위한 초기 메서드
     setStateSaintList(state, payload) {
       state.saintList.push(payload);
+    },
+
+    setStateExpenRootList(state, payload) {
+      state.expenRootList.push(payload);
+    },
+
+    setStateExpenLeafList(state, payload) {
+      state.expenLeafList.push(payload);
     },
   },
   actions: {
@@ -78,6 +89,22 @@ export default new Vuex.Store({
       };
       commit("setStateSaintList", data);
     },
+
+    setExpenRoot({ commit, state }, payload) {
+      const data = {
+        id: state.expenRootList.length,
+        name: payload,
+      };
+      commit("setStateExpenRootList", data);
+    },
+
+    setExpenLeaf({ commit, state }, payload) {
+      const data = {
+        id: state.expenLeafList.length,
+        name: payload,
+      };
+      commit("setStateExpenLeafList", data);
+    },
   },
   getters: {
     getSaintsOfferingList: (state) => {
@@ -92,6 +119,14 @@ export default new Vuex.Store({
     getSaintList: (state) => {
       //manage/saint 에서 사용함
       return state.saintList;
+    },
+
+    getExpenRootList: (state) => {
+      return state.expenRootList;
+    },
+
+    getExpenLeafList: (state) => {
+      return state.expenLeafList;
     },
   },
   modules: {},

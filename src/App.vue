@@ -61,10 +61,14 @@ export default {
   data: () => ({
     drawer: true,
     items: [
-      { title: "Home", icon: "mdi-view-dashboard", to: "/" },
-      { title: "헌금관리", icon: "mdi-image", to: "/manage/offering" },
-      { title: "성도관리", icon: "mdi-image", to: "/manage/saint" },
-      { title: "지출관리", icon: "mdi-help-box" },
+      { title: "수입 입력", icon: "mdi-view-dashboard", to: "/" },
+      { title: "헌금 등록", icon: "mdi-image", to: "/manage/offering" },
+      { title: "성도 등록", icon: "mdi-image", to: "/manage/saint" },
+      {
+        title: "지출 항목 등록",
+        icon: "mdi-help-box",
+        to: "/manage/expenditure",
+      },
       { title: "기부금영수증", icon: "mdi-help-box" },
       { title: "보고서", icon: "mdi-help-box" },
     ],
