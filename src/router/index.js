@@ -20,9 +20,24 @@ const routes = [
     component: () => import("../views/manage/Saint.vue"),
   },
   {
-    path: "/manage/expenditure",
-    name: "Saint",
-    component: () => import("../views/manage/Expenditure.vue"),
+    path: "/report/monthly",
+    name: "Monthly",
+    component: () => import("../views/report/Monthly.vue"),
+  },
+  {
+    path: "/report/quarter",
+    name: "Quarter",
+    component: () => import("../views/report/Quarter.vue"),
+  },
+  {
+    path: "/report/weekly",
+    name: "Weekly",
+    component: () => import("../views/report/Weekly.vue"),
+  },
+  {
+    path: "/report/year",
+    name: "Year",
+    component: () => import("../views/report/Year.vue"),
   },
 ];
 
