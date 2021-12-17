@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="8">
         <v-card>
-          <v-card-title> monthly </v-card-title>
+          <v-card-title> 월간결산 </v-card-title>
         </v-card>
       </v-col>
     </v-row>

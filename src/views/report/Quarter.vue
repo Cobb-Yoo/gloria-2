@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="8">
         <v-card>
-          <v-card-title> quarter </v-card-title>
+          <v-card-title> 분기결산 </v-card-title>
         </v-card>
       </v-col>
     </v-row>
