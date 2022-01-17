@@ -87,4 +87,9 @@ td {
   min-width: 100px;
   padding: 10px 20px;
 }
+
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
 </style>

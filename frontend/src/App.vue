@@ -59,9 +59,18 @@
 export default {
   name: "App",
   data: () => ({
-    drawer: true,
+    drawer: false,
     items: [
-      { title: "수입 입력", icon: "mdi-view-dashboard", to: "/" },
+      {
+        title: "헌금 입력",
+        icon: "mdi-view-dashboard",
+        to: "/register/offering",
+      },
+      {
+        title: "지출 입력",
+        icon: "mdi-view-dashboard",
+        to: "/register/expenditure",
+      },
       { title: "헌금 등록", icon: "mdi-image", to: "/manage/offering" },
       { title: "성도 등록", icon: "mdi-image", to: "/manage/saint" },
       {
@@ -79,3 +88,9 @@ export default {
   }),
 };
 </script>
+
+<style>
+body {
+  overflow: hidden;
+}
+</style>

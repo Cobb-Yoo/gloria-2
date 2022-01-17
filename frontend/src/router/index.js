@@ -10,13 +10,23 @@ const routes = [
     component: () => import("../views/Home.vue"),
   },
   {
+    path: "/register/offering",
+    name: "register_Offering",
+    component: () => import("../views/register/Offering.vue"),
+  },
+  {
+    path: "/register/offering",
+    name: "register_Offering",
+    component: () => import("../views/register/Expenditure.vue"),
+  },
+  {
     path: "/manage/offering",
-    name: "Offering",
+    name: "manage_Offering",
     component: () => import("../views/manage/Offering.vue"),
   },
   {
     path: "/manage/saint",
-    name: "Saint",
+    name: "manage_Saint",
     component: () => import("../views/manage/Saint.vue"),
   },
   {
@@ -38,6 +48,11 @@ const routes = [
     path: "/report/year",
     name: "Year",
     component: () => import("../views/report/Year.vue"),
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("../views/login/login.vue"),
   },
 ];
 
