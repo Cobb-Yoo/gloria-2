@@ -7,6 +7,11 @@
           <v-card-subtitle> 헌금 리스트에 추가합니다 </v-card-subtitle>
         </v-card>
 
+        <v-checkbox
+          v-model="checkbox"
+          label="대분류 : 상위 항목입니다."
+        ></v-checkbox>
+
         <v-text-field
           label="헌금 이름"
           v-model="offeringName"
@@ -89,6 +94,7 @@ export default {
         id: null,
         name: null,
       },
+      checkbox: false,
     };
   },
   methods: {

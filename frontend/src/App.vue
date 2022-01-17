@@ -37,7 +37,13 @@
       <v-divider></v-divider>
 
       <v-list dense nav>
-        <v-list-item v-for="item in items" :key="item.title" link :to="item.to">
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          link
+          :to="item.to"
+          @click.stop="drawer = !drawer"
+        >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -67,18 +73,21 @@ export default {
         to: "/register/offering",
       },
       {
+        title: "헌금 항목 등록",
+        icon: "mdi-view-dashboard",
+        to: "/manage/offering",
+      },
+      {
         title: "지출 입력",
         icon: "mdi-view-dashboard",
         to: "/register/expenditure",
       },
-      { title: "헌금 등록", icon: "mdi-image", to: "/manage/offering" },
-      { title: "성도 등록", icon: "mdi-image", to: "/manage/saint" },
       {
         title: "지출 항목 등록",
-        icon: "mdi-help-box",
+        icon: "mdi-view-dashboard",
         to: "/manage/expenditure",
       },
-      { title: "기부금영수증", icon: "mdi-help-box" },
+      { title: "성도 등록", icon: "mdi-image", to: "/manage/saint" },
       { title: "주간보고서", icon: "mdi-help-box", to: "/report/weekly" },
       { title: "월간보고서", icon: "mdi-help-box", to: "/report/monthly" },
       { title: "분기보고서", icon: "mdi-help-box", to: "/report/quarter" },

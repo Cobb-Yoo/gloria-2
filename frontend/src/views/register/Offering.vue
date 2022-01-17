@@ -1,8 +1,8 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col cols="4">
-        <v-card>
+      <v-col cols="4" align="center">
+        <v-card class="left-card" align="left">
           <v-card-title> 헌금입력 </v-card-title>
 
           <v-autocomplete
@@ -18,8 +18,14 @@
             <v-col>
               <v-text-field label="헌금" v-model="type"></v-text-field>
             </v-col>
+          </v-row>
+
+          <v-row :v-if="offeringNameList.size > 0">
             <v-col>
-              <v-chip-group active-class="deep-purple--text text--accent-4">
+              <v-chip-group
+                active-class="deep-purple--text text--accent-4"
+                class="quick-chip-field"
+              >
                 <v-chip
                   v-for="offeringName in offeringNameList"
                   :key="offeringName.id"
@@ -35,8 +41,13 @@
             <v-col>
               <v-text-field label="금액" v-model="offering"></v-text-field>
             </v-col>
+          </v-row>
+          <v-row>
             <v-col>
-              <v-chip-group active-class="deep-purple--text text--accent-4">
+              <v-chip-group
+                active-class="deep-purple--text text--accent-4"
+                class="quick-chip-field"
+              >
                 <v-chip
                   v-for="offeringValue in offeringValueList"
                   :key="offeringValue"
@@ -51,7 +62,7 @@
         </v-card>
       </v-col>
 
-      <v-col cols="6">
+      <v-col>
         <table>
           <thead>
             <tr>
@@ -60,7 +71,7 @@
               <td>헌금</td>
               <td>금액</td>
               <td>날짜</td>
-              <td></td>
+              <td>수정</td>
             </tr>
           </thead>
           <tbody>
@@ -217,7 +228,20 @@ td {
 
 th,
 td {
-  min-width: 100px;
   padding: 10px 20px;
+}
+
+.v-text-field {
+  width: 400px;
+  margin-left: 20px;
+}
+
+.quick-chip-field {
+  margin-left: 20px;
+}
+
+.left-card {
+  width: 450px;
+  justify-content: center;
 }
 </style>
