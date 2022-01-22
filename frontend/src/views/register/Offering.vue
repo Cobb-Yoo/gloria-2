@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col cols="4" align="center">
+      <v-col cols="5" align="center">
         <v-card class="left-card" align="left">
           <v-card-title> 헌금입력 </v-card-title>
 
@@ -62,15 +62,15 @@
         </v-card>
       </v-col>
 
-      <v-col>
+      <v-col align="center">
         <table>
           <thead>
             <tr>
               <td>순서</td>
+              <td>날짜</td>
               <td>이름</td>
               <td>헌금</td>
               <td>금액</td>
-              <td>날짜</td>
               <td>수정</td>
             </tr>
           </thead>
@@ -80,10 +80,10 @@
               :key="saintsOffering.id"
             >
               <td>{{ saintsOffering.id }}</td>
+              <td>{{ saintsOffering.date }}</td>
               <td>{{ saintsOffering.name }}</td>
               <td>{{ saintsOffering.type }}</td>
               <td>{{ saintsOffering.offering }}</td>
-              <td>{{ saintsOffering.date }}</td>
               <td>
                 <v-btn @click="editting(saintsOffering)"> 수정 </v-btn>
               </td>
@@ -177,7 +177,7 @@ export default {
         alert("뭔가 비었습니다");
       } else {
         this.setSaintsOfferingList(payload);
-        this.name = "";
+        //this.name = "";
       }
     },
     clickOffering(payload) {
