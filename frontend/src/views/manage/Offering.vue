@@ -12,14 +12,40 @@
           label="대분류 : 상위 항목입니다."
         ></v-checkbox>
 
-        <v-text-field
-          label="헌금 이름"
-          v-model="offeringName"
-          @keyup.enter="check()"
-        ></v-text-field>
+        <div v-if="checkbox">
+          <!-- 
+            대분류 때에는 부모 offer-kind만 정의하고
+            소분류에 부모 밑에 줄줄이 소세지로 만든다.
+           -->
+          <span> 대분류 입력 </span>
+
+          <v-text-field
+            label="대분류 이름"
+            v-model="offerKinds_parent_name"
+            @keyup.enter="check()"
+          ></v-text-field>
+        </div>
+
+        <div v-else>
+          <span> 소분류 입력 </span>
+
+          <v-text-field
+            label="대분류 입력"
+            v-model="offerKinds_parent_name"
+            @keyup.enter="next_form(소분류_입력)"
+          ></v-text-field>
+
+          <v-text-field
+            id="소분류_입력"
+            label="소분류 이름"
+            v-model="offerKinds_name"
+            @keyup.enter="check()"
+          ></v-text-field>
+        </div>
 
         <v-btn @click="check()"> 추가하기 </v-btn>
 
+        <span> 테이블에 들어가는 값은 </span>
         <table>
           <thead>
             <tr>
@@ -88,7 +114,8 @@ export default {
   name: "Offering",
   data() {
     return {
-      offeringName: null,
+      offerKinds_parent_name: null,
+      offerKinds_name: null,
       dialog: false,
       dialogData: {
         id: null,
@@ -100,8 +127,8 @@ export default {
   methods: {
     ...mapActions(["setOfferingList"]),
     check() {
-      this.setOfferingList(this.offeringName);
-      this.offeringName = "";
+      this.setOfferingList(this.offering_name);
+      this.offering_name = "";
     },
     editting(payload) {
       this.dialogData = payload;
