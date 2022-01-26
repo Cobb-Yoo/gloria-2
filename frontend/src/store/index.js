@@ -85,7 +85,11 @@ export default new Vuex.Store({
     setSaintList({ commit, state }, payload) {
       const data = {
         id: state.saintList.length,
-        name: payload,
+        name: payload.name,
+        gender: payload.gender,
+        position: payload.position,
+        region: payload.region,
+        age: payload.age,
       };
       commit("setStateSaintList", data);
     },
