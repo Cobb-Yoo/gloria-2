@@ -231,7 +231,7 @@ td {
   padding: 10px 20px;
 }
 
-.v-text-field {
+.auto .v-text-field {
   width: 400px;
   margin-left: 20px;
 }
