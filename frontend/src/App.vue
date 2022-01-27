@@ -37,21 +37,71 @@
       <v-divider></v-divider>
 
       <v-list dense nav>
-        <v-list-item
-          v-for="item in items"
-          :key="item.title"
-          link
-          :to="item.to"
-          @click.stop="drawer = !drawer"
-        >
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
+        <v-list-group>
+          <template v-slot:activator>
+            <v-list-item-title>등록</v-list-item-title>
+          </template>
 
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+          <v-list-item
+            v-for="register in registers"
+            :key="register.title"
+            link
+            @click.stop="drawer = !drawer"
+            :to="register.to"
+          >
+            <v-list-item-icon>
+              <v-icon>{{ register.icon }}</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>{{ register.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
+
+        <v-list-group>
+          <template v-slot:activator>
+            <v-list-item-title>관리</v-list-item-title>
+          </template>
+
+          <v-list-item
+            v-for="mamage in mamages"
+            :key="mamage.title"
+            link
+            @click.stop="drawer = !drawer"
+            :to="mamage.to"
+          >
+            <v-list-item-icon>
+              <v-icon>{{ mamage.icon }}</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>{{ mamage.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
+
+        <v-list-group>
+          <template v-slot:activator>
+            <v-list-item-title>보고서</v-list-item-title>
+          </template>
+
+          <v-list-item
+            v-for="report in reports"
+            :key="report.title"
+            link
+            @click.stop="drawer = !drawer"
+            :to="report.to"
+          >
+            <v-list-item-icon>
+              <v-icon>{{ report.icon }}</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>{{ report.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
       </v-list>
     </v-navigation-drawer>
 
@@ -66,28 +116,33 @@ export default {
   name: "App",
   data: () => ({
     drawer: false,
-    items: [
+
+    registers: [
       {
-        title: "헌금 입력",
+        title: "헌금 등록",
         icon: "mdi-view-dashboard",
         to: "/register/offering",
       },
       {
-        title: "헌금 항목 등록",
+        title: "지출 등록",
+        icon: "mdi-view-dashboard",
+        to: "/register/expenditure",
+      },
+    ],
+    mamages: [
+      {
+        title: "헌금 항목 관리",
         icon: "mdi-view-dashboard",
         to: "/manage/offering",
       },
       {
-        title: "지출 입력",
-        icon: "mdi-view-dashboard",
-        to: "/register/expenditure",
-      },
-      {
-        title: "지출 항목 등록",
+        title: "지출 항목 관리",
         icon: "mdi-view-dashboard",
         to: "/manage/expenditure",
       },
       { title: "성도 등록", icon: "mdi-image", to: "/manage/saint" },
+    ],
+    reports: [
       { title: "주간보고서", icon: "mdi-help-box", to: "/report/weekly" },
       { title: "월간보고서", icon: "mdi-help-box", to: "/report/monthly" },
       { title: "분기보고서", icon: "mdi-help-box", to: "/report/quarter" },
