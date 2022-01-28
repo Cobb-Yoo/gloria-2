@@ -33,6 +33,15 @@ export default new Vuex.Store({
     expenRootList: [],
     expenLeafList: [],
 
+    offer: [],
+
+    /*
+    cid
+    type
+    name
+    pid
+    */
+
     id: 0,
   },
   mutations: {
@@ -57,6 +66,10 @@ export default new Vuex.Store({
 
     setStateExpenLeafList(state, payload) {
       state.expenLeafList.push(payload);
+    },
+
+    setStateOffer(state, payload) {
+      state.offer.push(payload);
     },
   },
   actions: {
@@ -109,6 +122,17 @@ export default new Vuex.Store({
       };
       commit("setStateExpenLeafList", data);
     },
+
+    setOffer({ commit, state }, payload) {
+      const data = {
+        id: state.offer.length,
+        type: payload.type,
+        name: payload.name,
+        pid: payload.pid,
+      };
+
+      commit("setStateOffer", data);
+    },
   },
   getters: {
     getSaintsOfferingList: (state) => {
@@ -131,6 +155,10 @@ export default new Vuex.Store({
 
     getExpenLeafList: (state) => {
       return state.expenLeafList;
+    },
+
+    getOffer: (state) => {
+      return state.offer;
     },
   },
   modules: {},

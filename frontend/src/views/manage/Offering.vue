@@ -9,7 +9,7 @@
 
         <v-checkbox
           v-model="checkbox"
-          label="대분류 : 상위 항목입니다."
+          label="체크시 대분류 입력을 할 수 있습니다."
         ></v-checkbox>
 
         <div v-if="checkbox">
@@ -17,7 +17,6 @@
             대분류 때에는 부모 offer-kind만 정의하고
             소분류에 부모 밑에 줄줄이 소세지로 만든다.
            -->
-          <span> 대분류 입력 </span>
 
           <v-text-field
             label="대분류 이름"
@@ -27,12 +26,9 @@
         </div>
 
         <div v-else>
-          <span> 소분류 입력 </span>
-
           <v-text-field
             label="대분류 입력"
             v-model="offerKinds_parent_name"
-            @keyup.enter="next_form(소분류_입력)"
           ></v-text-field>
 
           <v-text-field
@@ -42,68 +38,35 @@
             @keyup.enter="check()"
           ></v-text-field>
         </div>
-
-        <v-btn @click="check()"> 추가하기 </v-btn>
-
-        <span> 테이블에 들어가는 값은 </span>
-        <table>
-          <thead>
-            <tr>
-              <td>순서</td>
-              <td>이름</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="offering in offeringList" :key="offering.id">
-              <td>{{ offering.id }}</td>
-              <td>{{ offering.name }}</td>
-
-              <td>
-                <v-btn @click="editting(offering)"> 수정 </v-btn>
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </v-col>
-    </v-row>
 
-    <div class="text-center">
-      <v-dialog v-model="dialog" width="500">
-        <v-card>
-          <v-card-title class="text-h5 grey lighten-2">
-            데이터 수정
-          </v-card-title>
-
-          <table>
+      <v-col align="center">
+        <v-simple-table>
+          <template v-slot:default>
             <thead>
               <tr>
                 <td>순서</td>
+                <td>분류코드</td>
+                <td>부모id</td>
                 <td>이름</td>
+                <td></td>
               </tr>
             </thead>
-
             <tbody>
-              <tr>
-                <td>{{ dialogData.id }}</td>
-                <td>{{ dialogData.name }}</td>
+              <tr v-for="offer in offerList.slice().reverse()" :key="offer.id">
+                <td>{{ offer.id }}</td>
+                <td>{{ offer.type }}</td>
+                <td>{{ offer.pid }}</td>
+                <td>{{ offer.name }}</td>
+                <td>
+                  <v-btn @click="editting(offer)"> 수정 </v-btn>
+                </td>
               </tr>
             </tbody>
-          </table>
-
-          <v-row>
-            <v-card-text> 해당 데이터를 수정하시겠습니까? </v-card-text>
-          </v-row>
-          <v-divider></v-divider>
-
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="primary" text @click="dialog = false"> 수정 </v-btn>
-            <v-btn color="red" text @click="dialog = false"> 취소 </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </div>
+          </template>
+        </v-simple-table>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -125,9 +88,29 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setOfferingList"]),
+    ...mapActions(["setOfferingList, setOffer"]),
     check() {
-      this.setOfferingList(this.offering_name);
+      //this.setOfferingList(this.offering_name);
+
+      console.log("hello");
+
+      var data;
+
+      if (this.checkbox) {
+        data = {
+          type: this.checkbox,
+          name: this.offerKinds_parent_name,
+        };
+      } else {
+        data = {
+          type: this.checkbox,
+          name: this.offerKinds_name,
+          pid: this.offerKinds_parent_name,
+        };
+      }
+
+      this.setOffer(data);
+
       this.offering_name = "";
     },
     editting(payload) {
@@ -136,7 +119,8 @@ export default {
     },
   },
   computed: {
-    ...mapGetters({ offeringList: "getOfferingList" }),
+    //...mapGetters({ offeringList: "getOfferingList"),
+    ...mapGetters({ offerList: "getOffer" }),
   },
 };
 </script>
