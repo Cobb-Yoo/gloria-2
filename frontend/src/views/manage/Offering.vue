@@ -92,8 +92,6 @@ export default {
     check() {
       //this.setOfferingList(this.offering_name);
 
-      console.log("hello");
-
       var data;
 
       if (this.checkbox) {
@@ -110,8 +108,6 @@ export default {
       }
 
       this.setOffer(data);
-
-      this.offering_name = "";
     },
     editting(payload) {
       this.dialogData = payload;

@@ -124,6 +124,8 @@ export default new Vuex.Store({
     },
 
     setOffer({ commit, state }, payload) {
+      console.log(payload);
+
       const data = {
         id: state.offer.length,
         type: payload.type,
