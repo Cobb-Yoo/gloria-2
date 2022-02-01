@@ -194,11 +194,7 @@ export default {
     created() {},
   },
   computed: {
-    ...mapGetters({
-      saintsOfferingList: "getSaintsOfferingList",
-      offeringNameList: "getOfferingList",
-      saintList: "getSaintList",
-    }),
+    ...mapGetters({}),
   },
 };
 </script>
