@@ -7,20 +7,8 @@
           <v-card-subtitle> 헌금 종류에 있는 항목만 </v-card-subtitle>
         </v-card>
 
-        <v-text-field
-          id="입력"
-          label="헌금이름"
-          v-model="offer_name"
-          @keyup.enter="check()"
-        ></v-text-field>
-
-        <br />
-
-        <v-card>
-          <v-card-title> 헌금 종류 추가 </v-card-title>
-          <v-card-subtitle> 헌금 종류에 있는 항목만 </v-card-subtitle>
-        </v-card>
-
+        <v-checkbox id="빠른입력" v-model="quick" label="빠른입력">
+        </v-checkbox>
         <v-text-field
           id="입력"
           label="헌금이름"
@@ -35,15 +23,16 @@
             <thead>
               <tr>
                 <td>헌금 이름</td>
+                <td>빠른 입력</td>
                 <td></td>
               </tr>
             </thead>
             <tbody>
               <tr v-for="offer in offerList.slice().reverse()" :key="offer.id">
                 <td>{{ offer.name }}</td>
+                <td>{{ offer.quick }}</td>
                 <td @click="editting(offer)">
-                  <!-- <v-btn> 수정 </v-btn> -->
-                  수정
+                  <v-btn> 수정 </v-btn>
                 </td>
               </tr>
             </tbody>
@@ -62,29 +51,36 @@ export default {
   data() {
     return {
       offer_name: null,
+      quick_offer_name: null,
+      quick: false,
       dialog: false,
       dialogData: {
         id: null,
         name: null,
       },
-      checkbox: false,
     };
   },
   methods: {
-    ...mapActions(["setOffer"]),
+    ...mapActions(["setOffer", "setQuickOffering"]),
     check() {
-      const data = this.offer_name;
+      const data = {
+        name: this.offer_name,
+        quick: this.quick,
+      };
       this.setOffer(data);
       this.offer_name = "";
     },
     editting(payload) {
-      console.log(payload);
-      //this.dialogData = payload;
-      //this.dialog = true;
+      this.dialogData = payload;
+      this.dialog = true;
+    },
+    check_qucik() {
+      const data = this.quick_offer_name;
+      this.setQuickOffering(data);
+      this.quick_offer_name = "";
     },
   },
   computed: {
-    //...mapGetters({ offeringList: "getOfferingList"),
     ...mapGetters({ offerList: "getOffer" }),
   },
 };

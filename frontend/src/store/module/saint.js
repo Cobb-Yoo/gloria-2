@@ -10,7 +10,7 @@ const saintStore = {
   actions: {
     setSaint({ commit, state }, payload) {
       const data = {
-        id: state.saintList.length,
+        id: state.saint.length,
         name: payload.name,
         gender: payload.gender,
         position: payload.position,

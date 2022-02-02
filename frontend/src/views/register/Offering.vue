@@ -20,28 +20,12 @@
             </v-col>
           </v-row>
 
-          <v-row :v-if="offeringNameList.size > 0">
-            <v-col>
-              <v-chip-group
-                active-class="deep-purple--text text--accent-4"
-                class="quick-chip-field"
-              >
-                <v-chip
-                  v-for="offeringName in offeringNameList"
-                  :key="offeringName.id"
-                  @click="clickType(offeringName.name)"
-                >
-                  {{ offeringName.name }}
-                </v-chip>
-              </v-chip-group>
-            </v-col>
-          </v-row>
-
           <v-row>
             <v-col>
               <v-text-field label="금액" v-model="offering"></v-text-field>
             </v-col>
           </v-row>
+
           <v-row>
             <v-col>
               <v-chip-group
@@ -77,16 +61,16 @@
             </thead>
             <tbody>
               <tr
-                v-for="saintsOffering in saintsOfferingList.slice().reverse()"
-                :key="saintsOffering.id"
+                v-for="offer in offeringList.slice().reverse()"
+                :key="offer.id"
               >
-                <td>{{ saintsOffering.id }}</td>
-                <td>{{ saintsOffering.date }}</td>
-                <td>{{ saintsOffering.name }}</td>
-                <td>{{ saintsOffering.type }}</td>
-                <td>{{ saintsOffering.offering }}</td>
+                <td>{{ offer.id }}</td>
+                <td>{{ offer.date }}</td>
+                <td>{{ offer.name }}</td>
+                <td>{{ offer.type }}</td>
+                <td>{{ offer.offering }}</td>
                 <td>
-                  <v-btn @click="editting(saintsOffering)"> 수정 </v-btn>
+                  <v-btn @click="editting(offer)"> 수정 </v-btn>
                 </td>
               </tr>
             </tbody>
@@ -154,7 +138,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setSaintsOfferingList"]),
+    ...mapActions(["setOffering"]),
     check() {
       const today = new Date();
 
@@ -164,18 +148,19 @@ export default {
 
       const dateString = year + "-" + month + "-" + day;
 
-      const payload = {
+      const data = {
         name: this.name,
         offering: this.offering,
         type: this.type,
         date: dateString,
       };
 
-      if (payload.name == "" || payload.offering == "" || payload.type == "") {
+      console.log(data);
+
+      if (data.name == "" || data.offering == "" || data.type == "") {
         alert("뭔가 비었습니다");
       } else {
-        this.setSaintsOfferingList(payload);
-        //this.name = "";
+        this.setOffering(data);
       }
     },
     clickOffering(payload) {
@@ -191,10 +176,12 @@ export default {
       this.dialog = true;
       this.dialogData = payload;
     },
-    created() {},
   },
   computed: {
-    ...mapGetters({}),
+    ...mapGetters({
+      offeringList: "getOffering",
+      saintList: "getSaint",
+    }),
   },
 };
 </script>

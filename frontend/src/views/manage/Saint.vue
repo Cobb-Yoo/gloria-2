@@ -11,7 +11,7 @@
         <v-text-field
           label="이름"
           v-model="name"
-          @keyup.enter="next(직책)"
+          @keyup.enter="check()"
         ></v-text-field>
 
         <v-text-field
@@ -58,7 +58,6 @@
               <td>{{ saint.region }}</td>
               <td>{{ saint.age }}</td>
               <td>{{ saint.gender }}</td>
-
               <td>
                 <v-btn @click="editting(saint.id)"> 수정 </v-btn>
               </td>
@@ -84,7 +83,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setSaintList"]),
+    ...mapActions(["setSaint"]),
     check() {
       const data = {
         name: this.name,
@@ -94,7 +93,7 @@ export default {
         age: this.age,
       };
 
-      this.setSaintList(data);
+      this.setSaint(data);
 
       this.clear();
     },
@@ -107,7 +106,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters({ saintList: "getSaintList" }),
+    ...mapGetters({ saintList: "getSaint" }),
   },
 };
 </script>
