@@ -15,14 +15,19 @@ const routes = [
     component: () => import("../views/register/Offering.vue"),
   },
   {
-    path: "/register/offering",
-    name: "register_Offering",
+    path: "/register/expenditure",
+    name: "register_Expenditure",
     component: () => import("../views/register/Expenditure.vue"),
   },
   {
     path: "/manage/offering",
     name: "manage_Offering",
     component: () => import("../views/manage/Offering.vue"),
+  },
+  {
+    path: "/manage/expenditure",
+    name: "manage_Expenditure",
+    component: () => import("../views/manage/Expenditure.vue"),
   },
   {
     path: "/manage/saint",
