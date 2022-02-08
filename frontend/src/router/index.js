@@ -35,6 +35,21 @@ const routes = [
     component: () => import("../views/manage/Saint.vue"),
   },
   {
+    path: "/manage/region",
+    name: "manage_Region",
+    component: () => import("../views/manage/Region.vue"),
+  },
+  {
+    path: "/manage/position",
+    name: "manage_Position",
+    component: () => import("../views/manage/Position.vue"),
+  },
+  {
+    path: "/manage/team",
+    name: "manage_Team",
+    component: () => import("../views/manage/Team.vue"),
+  },
+  {
     path: "/report/monthly",
     name: "Monthly",
     component: () => import("../views/report/Monthly.vue"),

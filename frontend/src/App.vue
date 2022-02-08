@@ -132,6 +132,9 @@ export default {
         to: "/manage/expenditure",
       },
       { title: "성도 등록", icon: "mdi-image", to: "/manage/saint" },
+      { title: "구역 등록", icon: "mdi-image", to: "/manage/region" },
+      { title: "직책 등록", icon: "mdi-image", to: "/manage/position" },
+      { title: "부서 등록", icon: "mdi-image", to: "/manage/team" },
     ],
     reports: [
       { title: "주간보고서", icon: "mdi-help-box", to: "/report/weekly" },
