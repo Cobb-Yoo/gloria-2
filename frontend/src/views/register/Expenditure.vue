@@ -7,19 +7,19 @@
 
           <v-autocomplete
             label="지출항목"
-            v-model="name"
+            v-model="expenditure"
             :items="expenditureList"
-            item-text="name"
-            item-value="name"
+            item-text="expenditure"
+            item-value="expenditure"
           >
           </v-autocomplete>
 
           <v-autocomplete
             label="지출부서"
-            v-model="name"
-            :items="expenditureList"
-            item-text="name"
-            item-value="name"
+            v-model="position"
+            :items="positionList"
+            item-text="position"
+            item-value="position"
           >
           </v-autocomplete>
 
@@ -41,13 +41,34 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   name: "register_expenditure",
   data() {
-    return {};
+    return {
+      name: null,
+      team: null,
+    };
   },
-  methods: {},
-  computed: {},
+  methods: {
+    ...mapActions(["setExpenditure"]),
+    check() {
+      const data = {
+        name: this.name,
+        team: this.team,
+      };
+
+      this.setExpenditure(data);
+    },
+  },
+  computed: {
+    ...mapGetters({
+      positionList: "getPosition",
+      teamList: "getTeam",
+      expenditureList: "getExpenditure",
+    }),
+  },
 };
 </script>
 
