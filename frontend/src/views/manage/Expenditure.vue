@@ -7,15 +7,15 @@
         <v-card>
           <v-card-title> 지출 항목 등록 </v-card-title>
           <v-card-subtitle> </v-card-subtitle>
+
+          <v-text-field
+            label="지출 항목 대분류"
+            v-model="expenRoot"
+            @keyup.enter="addExpenRoot()"
+          ></v-text-field>
+
+          <v-btn @click="addExpenRoot()"> 추가하기 </v-btn>
         </v-card>
-
-        <v-text-field
-          label="이름"
-          v-model="expenRoot"
-          @keyup.enter="addExpenRoot()"
-        ></v-text-field>
-
-        <v-btn @click="addExpenRoot()"> 추가하기 </v-btn>
       </v-col>
     </v-row>
 
@@ -26,15 +26,20 @@
         <v-card>
           <v-card-title> 지출 세부 항목 등록 </v-card-title>
           <v-card-subtitle> </v-card-subtitle>
+          <v-text-field
+            label="지출 항목 대분류"
+            v-model="expenLeaf"
+            @keyup.enter="addExpenLeaf()"
+          ></v-text-field>
+
+          <v-text-field
+            label="이름"
+            v-model="expenLeaf"
+            @keyup.enter="addExpenLeaf()"
+          ></v-text-field>
+
+          <v-btn @click="addExpenLeaf()"> 추가하기 </v-btn>
         </v-card>
-
-        <v-text-field
-          label="이름"
-          v-model="expenLeaf"
-          @keyup.enter="addExpenLeaf()"
-        ></v-text-field>
-
-        <v-btn @click="addExpenLeaf()"> 추가하기 </v-btn>
       </v-col>
     </v-row>
   </v-container>
