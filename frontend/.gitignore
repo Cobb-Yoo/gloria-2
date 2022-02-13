@@ -23,3 +23,6 @@ pnpm-debug.log*
 *.sw?
 
 /자료
+
+backend/config/.env
+backend/config/config.json
