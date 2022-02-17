@@ -22,4 +22,7 @@ app.use(
   })
 );
 
+const testRouter = require("./routers/test");
+app.use("/test", testRouter);
+
 module.exports = app;

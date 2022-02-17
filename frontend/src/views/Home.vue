@@ -11,7 +11,21 @@
         </v-card>
       </v-col>
     </v-row>
+
+    <v-row justify="center">
+      <v-btn @click="test()"> hello </v-btn>
+    </v-row>
   </v-container>
 </template>
 
-<script></script>
+<script>
+import axios from "axios";
+
+export default {
+  test() {
+    axios.get("http://localhost:5000/test").then(() => {
+      console.log("hello");
+    });
+  },
+};
+</script>
