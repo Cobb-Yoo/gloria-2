@@ -22,10 +22,18 @@
 import axios from "axios";
 
 export default {
-  test() {
-    axios.get("http://localhost:5000/test").then(() => {
+  methods: {
+    test() {
       console.log("hello");
-    });
+      axios
+        .get(`http://localhost:5000/test`)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>
