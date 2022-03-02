@@ -26,8 +26,9 @@ export default {
     test() {
       console.log("hello");
       axios
-        .get(`http://localhost:5000/test`)
+        .get("http://localhost:5000/user")
         .then((res) => {
+          console.log("hello2");
           console.log(res);
         })
         .catch((err) => {

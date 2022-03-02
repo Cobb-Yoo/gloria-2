@@ -1,28 +1,23 @@
-const express = require("express");
+var createError = require("http-errors");
+var express = require("express");
+var path = require("path");
+var cookieParser = require("cookie-parser");
+var logger = require("morgan");
 
-const morgan = require("morgan");
-const cors = require("cors");
-const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "./config/.env") });
+var usersRouter = require("./routes/users");
 
-const app = express();
+var app = express();
 
-// DB connection
-// require('./db/sequelize');
+// view engine setup
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
 
-// middlewares
+app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
 
-app.use(
-  cors({
-    origin: "http://localhost:8080",
-    credentials: true,
-  })
-);
-
-const testRouter = require("./routers/test");
-app.use("/test", testRouter);
+app.use("/user", usersRouter);
 
 module.exports = app;
