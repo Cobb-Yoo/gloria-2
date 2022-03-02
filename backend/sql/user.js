@@ -1,1 +1,1 @@
-exports.getUser = "select * from user";
+exports.getUser = "select * from user;";
