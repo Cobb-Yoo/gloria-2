@@ -1,16 +1,10 @@
 "use strict";
 const { Model } = require("sequelize");
-const bcrypt = require("bcrypt");
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate({ Work, Like }) {
-      // define association here
-      this.hasMany(Work, { foreignKey: "userId", as: "work" });
-      this.hasMany(Like, { foreignKey: "userId", as: "like" });
-    }
-    toJSON() {
-      return { ...this.get(), password: undefined };
+    static associate(models) {
+      // 전체 모델을 파라미터로 받아서 현재 모델과 연관 관계를 정의해야 하는 모델이 있다면 여기서 정의함...
     }
   }
 
