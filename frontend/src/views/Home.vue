@@ -14,6 +14,7 @@
 
     <v-row justify="center">
       <v-btn @click="test()"> hello </v-btn>
+      <v-btn @click="test2()"> world </v-btn>
     </v-row>
   </v-container>
 </template>
@@ -26,9 +27,21 @@ export default {
     test() {
       console.log("hello");
       axios
-        .get("http://localhost:5000/user")
+        .get("http://localhost:5000/")
         .then((res) => {
           console.log("hello2");
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    test2() {
+      console.log("hello");
+      axios
+        .post("http://localhost:5000/")
+        .then((res) => {
+          console.log("hello3");
           console.log(res);
         })
         .catch((err) => {

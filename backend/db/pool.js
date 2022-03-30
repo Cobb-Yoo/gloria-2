@@ -1,4 +1,4 @@
-const mysql = require("mysql2");
+const mysql = require("mysql2/promise");
 
 // connection pool을 생성한다. pool-specific setting들은 디폴트다.
 const pool = mysql.createPool({
