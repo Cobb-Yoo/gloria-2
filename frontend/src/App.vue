@@ -83,6 +83,12 @@
           </v-list-item>
         </v-list-group>
       </v-list>
+
+      <template v-slot:append>
+        <div class="pa-2">
+          <router-link to="/login"> Login </router-link>
+        </div>
+      </template>
     </v-navigation-drawer>
 
     <v-main>
@@ -133,6 +139,10 @@ export default {
     ],
     right: null,
   }),
+
+  methods: {
+    gotoLogin() {},
+  },
 };
 </script>
 
