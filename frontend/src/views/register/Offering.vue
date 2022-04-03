@@ -44,9 +44,7 @@
           </v-row>
           <v-btn @click="check()"> 확인</v-btn>
         </v-card>
-      </v-col>
 
-      <v-col align="center">
         <v-simple-table>
           <template v-slot:default>
             <thead>
@@ -197,7 +195,7 @@ export default {
 }
 
 .left-card {
-  width: 450px;
+  width: 2000px;
   justify-content: center;
 }
 </style>

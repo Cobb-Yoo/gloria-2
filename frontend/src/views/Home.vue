@@ -36,18 +36,6 @@ export default {
           console.log(err);
         });
     },
-    test2() {
-      console.log("hello");
-      axios
-        .post("http://localhost:5000/")
-        .then((res) => {
-          console.log("hello3");
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
   },
 };
 </script>

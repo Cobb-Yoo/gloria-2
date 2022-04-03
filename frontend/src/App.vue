@@ -4,6 +4,8 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-spacer></v-spacer>
+
+      <router-link to="/signin"> Signin </router-link>
     </v-app-bar>
 
     <v-navigation-drawer app v-model="drawer">
@@ -83,12 +85,6 @@
           </v-list-item>
         </v-list-group>
       </v-list>
-
-      <template v-slot:append>
-        <div class="pa-2">
-          <router-link to="/login"> Login </router-link>
-        </div>
-      </template>
     </v-navigation-drawer>
 
     <v-main>

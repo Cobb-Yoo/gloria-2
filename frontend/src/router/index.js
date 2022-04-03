@@ -70,9 +70,9 @@ const routes = [
     component: () => import("../views/report/Year.vue"),
   },
   {
-    path: "/login",
-    name: "login",
-    component: () => import("../views/login/login.vue"),
+    path: "/signin",
+    name: "Signin",
+    component: () => import("../views/sign/signin.vue"),
   },
 ];
 
