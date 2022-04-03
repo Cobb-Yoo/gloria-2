@@ -1,11 +1,9 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" elevation="0">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-
       <v-spacer></v-spacer>
 
-      <router-link to="/signin"> Signin </router-link>
+      <router-link to="/signin"> <v-btn> Signin </v-btn></router-link>
     </v-app-bar>
 
     <v-navigation-drawer app v-model="drawer">
@@ -97,8 +95,6 @@
 export default {
   name: "App",
   data: () => ({
-    drawer: false,
-
     registers: [
       {
         title: "헌금 등록",
@@ -133,7 +129,6 @@ export default {
       { title: "분기보고서", icon: "mdi-help-box", to: "/report/quarter" },
       { title: "연간보고서", icon: "mdi-help-box", to: "/report/year" },
     ],
-    right: null,
   }),
 
   methods: {

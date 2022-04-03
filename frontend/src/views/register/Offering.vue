@@ -1,26 +1,32 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col cols="5" align="center">
-        <v-card class="left-card" align="left">
-          <v-card-title> 헌금입력 </v-card-title>
-
-          <v-autocomplete
-            label="이름"
-            v-model="name"
-            :items="saintList"
-            item-text="name"
-            item-value="name"
-          >
-          </v-autocomplete>
-
+      <v-col cols="10" align="center">
+        <v-card align="center">
+          <v-row class="ma-0">
+            <v-card-title> 헌금입력 </v-card-title>
+          </v-row>
           <v-row>
             <v-col>
-              <v-text-field label="헌금" v-model="type"></v-text-field>
+              <v-autocomplete
+                label="이름"
+                v-model="name"
+                :items="saintList"
+                item-text="name"
+                item-value="name"
+                id="name_auto_complete"
+              >
+              </v-autocomplete>
             </v-col>
-          </v-row>
 
-          <v-row>
+            <v-col>
+              <v-text-field
+                id="offer_text"
+                label="헌금"
+                v-model="type"
+              ></v-text-field>
+            </v-col>
+
             <v-col>
               <v-text-field label="금액" v-model="offering"></v-text-field>
             </v-col>
@@ -42,10 +48,11 @@
               </v-chip-group>
             </v-col>
           </v-row>
-          <v-btn @click="check()"> 확인</v-btn>
+
+          <v-btn @click="check()" class="mb-3"> dd </v-btn>
         </v-card>
 
-        <v-simple-table>
+        <v-simple-table height="600px">
           <template v-slot:default>
             <thead>
               <tr>
@@ -77,7 +84,7 @@
       </v-col>
     </v-row>
 
-    <v-dialog v-model="dialog" width="600">
+    <v-dialog v-model="dialog" width="550">
       <v-card>
         <v-card-title class="text-h5 grey lighten-2">
           데이터 수정
@@ -185,17 +192,11 @@ export default {
 </script>
 
 <style scoped>
-.auto .v-text-field {
-  width: 400px;
-  margin-left: 20px;
-}
-
 .quick-chip-field {
   margin-left: 20px;
 }
 
-.left-card {
-  width: 2000px;
-  justify-content: center;
+.v-text-field {
+  width: 400px;
 }
 </style>
