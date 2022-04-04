@@ -27,7 +27,11 @@
 
 <script>
 export default {
-  data() {},
+  data() {
+    return {
+      type: null,
+    };
+  },
 };
 </script>
 

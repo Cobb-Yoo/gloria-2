@@ -6,7 +6,7 @@
       <router-link to="/signin"> <v-btn> Signin </v-btn></router-link>
     </v-app-bar>
 
-    <v-navigation-drawer app v-model="drawer">
+    <v-navigation-drawer app>
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6"> Application </v-list-item-title>
@@ -70,7 +70,6 @@
             v-for="report in reports"
             :key="report.title"
             link
-            @click.stop="drawer = !drawer"
             :to="report.to"
           >
             <v-list-item-icon>
@@ -130,10 +129,6 @@ export default {
       { title: "연간보고서", icon: "mdi-help-box", to: "/report/year" },
     ],
   }),
-
-  methods: {
-    gotoLogin() {},
-  },
 };
 </script>
 
