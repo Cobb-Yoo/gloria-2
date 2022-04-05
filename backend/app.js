@@ -21,8 +21,12 @@ app.use(
 
 //router imports
 const userRouter = require("./routes/users");
+const signinRouter = require("./routes/signin");
+const signupRouter = require("./routes/signup");
 
 // routes
 app.use("/", userRouter);
+app.use("/signin", signinRouter);
+app.use("/signup", signupRouter);
 
 module.exports = app;
