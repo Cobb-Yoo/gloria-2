@@ -25,11 +25,9 @@ import axios from "axios";
 export default {
   methods: {
     test() {
-      console.log("hello");
       axios
         .get("http://localhost:5000/")
         .then((res) => {
-          console.log("hello2");
           console.log(res);
         })
         .catch((err) => {

@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -49,6 +51,17 @@ export default {
     check() {
       if (this.id != null && this.pw != null) {
         alert(this.id + this.pw);
+        axios
+          .post("http://localhost:5000/signin", {
+            id: this.id,
+            pw: this.pw,
+          })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       } else {
         alert("하나 없어용");
       }
