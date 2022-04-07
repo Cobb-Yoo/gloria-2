@@ -11,8 +11,7 @@ router.post("/", async (req, res, next) => {
     console.log("hello");
     console.log(req.body);
 
-    const data = await pool.query(sql.getChurch, [req.body.id, req.body.pw]);
-    console.log(data);
+    //const data = await pool.query(sql.getChurch, [req.body.id, req.body.pw]);
 
     //return res.json(data[0]);
     return res.status(200);
