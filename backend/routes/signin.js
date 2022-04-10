@@ -1,23 +1,18 @@
 var express = require("express");
 var router = express.Router();
 const pool = require("../db/pool");
-const sql = require("../query/signin");
 
 // 로그인
 
 /* GET users listing. */
 router.post("/", async (req, res, next) => {
-  try {
-    console.log("hello");
-    console.log(req.body);
+  var sqlStr = "SELECT * FROM church";
+  await pool.query(sqlStr, [req.body.id, req.body.pw], (err, results) => {
+    console.log(results.data);
+    return res.json(results.data[0]);
+  });
 
-    //const data = await pool.query(sql.getChurch, [req.body.id, req.body.pw]);
-
-    //return res.json(data[0]);
-    return res.status(200);
-  } catch (err) {
-    return res.status(500).json(err);
-  }
+  //return res.status(200);
 });
 
 module.exports = router;
