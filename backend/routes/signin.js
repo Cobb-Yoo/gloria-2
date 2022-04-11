@@ -6,13 +6,16 @@ const pool = require("../db/pool");
 
 /* GET users listing. */
 router.post("/", async (req, res, next) => {
-  var sqlStr = "SELECT * FROM church";
-  await pool.query(sqlStr, [req.body.id, req.body.pw], (err, results) => {
-    console.log(results.data);
-    return res.json(results.data[0]);
-  });
+  console.log(req.body.id);
+  console.log(req.body.pw);
 
-  //return res.status(200);
+  try {
+    const result = await pool.query("SELECT * FROM CHURCH");
+    console.log(result[0]);
+    return res.json(result[0]);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
 });
 
 module.exports = router;
