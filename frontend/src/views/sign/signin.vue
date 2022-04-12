@@ -57,7 +57,11 @@ export default {
             pw: this.pw,
           })
           .then((res) => {
-            console.log(res);
+            if (!res.data.length) {
+              alert("로그인 실패");
+            } else {
+              alert("로그인 성공");
+            }
           })
           .catch((err) => {
             console.log(err);
