@@ -9,8 +9,6 @@ const sql = require("../query/signin");
 router.post("/", async (req, res, next) => {
   try {
     const result = await pool.query(sql.getChurch, [req.body.id, req.body.pw]);
-
-    console.log(result[0]);
     return res.json(result[0]);
   } catch (err) {
     return res.status(500).json(err);

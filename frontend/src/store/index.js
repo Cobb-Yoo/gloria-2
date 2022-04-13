@@ -9,6 +9,7 @@ import expenditureStore from "../store/module/expenditure";
 import positionStore from "../store/module/position";
 import regionStore from "../store/module/region";
 import teamStore from "../store/module/team";
+import signStore from "../store/module/sign";
 
 export default new Vuex.Store({
   state: {
@@ -121,5 +122,6 @@ export default new Vuex.Store({
     regionStore,
     positionStore,
     teamStore,
+    signStore,
   },
 });

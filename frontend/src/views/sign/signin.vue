@@ -34,11 +34,14 @@
         </v-card>
       </v-col>
     </v-row>
+
+    {{ info }}
   </v-container>
 </template>
 
 <script>
 import axios from "axios";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   data() {
@@ -48,9 +51,10 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["setInfo"]),
     check() {
       if (this.id != null && this.pw != null) {
-        alert(this.id + this.pw);
+        //alert(this.id + this.pw);
         axios
           .post("http://localhost:5000/signin", {
             id: this.id,
@@ -60,7 +64,7 @@ export default {
             if (!res.data.length) {
               alert("로그인 실패");
             } else {
-              alert("로그인 성공");
+              this.setInfo(res);
             }
           })
           .catch((err) => {
@@ -73,6 +77,11 @@ export default {
     goto(targetName) {
       this.$router.push(targetName);
     },
+  },
+  computed: {
+    ...mapGetters({
+      info: "getInfo",
+    }),
   },
 };
 </script>
