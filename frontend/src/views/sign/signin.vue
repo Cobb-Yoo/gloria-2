@@ -34,14 +34,13 @@
         </v-card>
       </v-col>
     </v-row>
-
-    {{ info }}
   </v-container>
 </template>
 
 <script>
 import axios from "axios";
 import { mapActions, mapGetters } from "vuex";
+import router from "../../router/index";
 
 export default {
   data() {
@@ -64,7 +63,8 @@ export default {
             if (!res.data.length) {
               alert("로그인 실패");
             } else {
-              this.setInfo(res);
+              this.setInfo(res.data);
+              router.push("/");
             }
           })
           .catch((err) => {

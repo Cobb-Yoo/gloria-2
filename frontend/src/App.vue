@@ -3,7 +3,14 @@
     <v-app-bar app color="primary" elevation="0">
       <v-spacer></v-spacer>
 
-      <router-link to="/signin"> <v-btn> Signin </v-btn></router-link>
+      <div v-if="info.length > 0">
+        <v-btn @click="signout"> SignOut </v-btn>
+      </div>
+      <div v-else>
+        <router-link to="/signin">
+          <v-btn> Signin </v-btn>
+        </router-link>
+      </div>
     </v-app-bar>
 
     <v-navigation-drawer app>
@@ -91,6 +98,8 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "App",
   data: () => ({
@@ -129,6 +138,17 @@ export default {
       { title: "연간보고서", icon: "mdi-help-box", to: "/report/year" },
     ],
   }),
+  methods: {
+    ...mapActions(["setInfo"]),
+    signout() {
+      this.setInfo("");
+    },
+  },
+  computed: {
+    ...mapGetters({
+      info: "getInfo",
+    }),
+  },
 };
 </script>
 
