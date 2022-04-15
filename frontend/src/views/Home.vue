@@ -26,7 +26,7 @@ export default {
   methods: {
     test() {
       axios
-        .get("http://localhost:5000/")
+        .post("http://localhost:5000/")
         .then((res) => {
           console.log(res);
         })

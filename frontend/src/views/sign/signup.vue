@@ -15,27 +15,6 @@
           <v-row justify="center">
             <v-col cols="8">
               <v-text-field
-                label="교회 이름"
-                v-model="name"
-                filled
-                rounded
-              ></v-text-field>
-              <v-text-field
-                filled
-                rounded
-                label="이메일"
-                v-model="email"
-                :rules="email_rule"
-                hint="비밀번호를 찾을 때 사용됩니다."
-                persistent-hint
-              ></v-text-field>
-              <v-text-field
-                label="주소"
-                v-model="loc"
-                filled
-                rounded
-              ></v-text-field>
-              <v-text-field
                 label="아이디"
                 v-model="id"
                 filled
@@ -60,6 +39,32 @@
                 type="password"
                 :rules="[check_pw === pw || '비밀번호가 동일하지 않습니다.']"
               ></v-text-field>
+
+              <v-text-field
+                label="교회 이름"
+                v-model="name"
+                filled
+                rounded
+              ></v-text-field>
+
+              <v-text-field
+                label="주소"
+                v-model="loc"
+                filled
+                rounded
+              ></v-text-field>
+
+              <v-text-field
+                filled
+                rounded
+                label="이메일"
+                v-model="email"
+                :rules="email_rule"
+                hint="비밀번호를 찾을 때 사용됩니다."
+                persistent-hint
+              ></v-text-field>
+
+              <v-btn @click="signin()"> 회원가입 </v-btn>
             </v-col>
           </v-row>
         </v-card>
@@ -69,6 +74,10 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+import axios from "axios";
+import router from "../../router/index";
+
 export default {
   data() {
     return {
@@ -89,12 +98,36 @@ export default {
       pw: null,
       pw_rule: [
         (v) => !!v || "비밀번호는 필수항목입니다.",
-        (v) => (v && v.length >= 10) || "비밀번호는 10자 이상으로 적어주세요.",
+        (v) => (v && v.length >= 0) || "비밀번호는 10자 이상으로 적어주세요.",
       ],
       check_pw: null,
     };
   },
-  methods: {},
+  methods: {
+    ...mapActions(["postChurch"]),
+    signin() {
+      axios
+        .post("http://localhost:5000/signup", {
+          id: this.id,
+          pw: this.pw,
+          name: this.name,
+          loc: this.loc,
+          email: this.email,
+        })
+        .then((res) => {
+          if (!res.data.length) {
+            alert("로그인 실패");
+          } else {
+            this.setInfo(res.data);
+            alert("회원가입에 성공하셨습니다.");
+            router.push("/");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 
