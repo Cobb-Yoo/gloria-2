@@ -1,6 +1,8 @@
 <template>
   <v-app>
     <v-app-bar app color="primary" elevation="0">
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+
       <v-spacer></v-spacer>
 
       <div v-if="info.length > 0">
@@ -13,7 +15,7 @@
       </div>
     </v-app-bar>
 
-    <v-navigation-drawer app>
+    <v-navigation-drawer app v-model="drawer">
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6"> Application </v-list-item-title>
@@ -103,6 +105,7 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "App",
   data: () => ({
+    drawer: false,
     registers: [
       {
         title: "헌금 등록",
