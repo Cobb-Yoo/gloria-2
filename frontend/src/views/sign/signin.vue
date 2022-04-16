@@ -55,9 +55,11 @@ export default {
       if (this.id != null && this.pw != null) {
         //alert(this.id + this.pw);
         axios
-          .post("http://localhost:5000/signin", {
-            id: this.id,
-            pw: this.pw,
+          .get("http://localhost:5000/signin", {
+            params: {
+              id: this.id,
+              pw: this.pw,
+            },
           })
           .then((res) => {
             if (!res.data.length) {
