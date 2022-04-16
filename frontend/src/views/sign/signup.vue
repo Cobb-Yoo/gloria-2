@@ -104,7 +104,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["postChurch"]),
+    ...mapActions(["setInfo"]),
     signin() {
       axios
         .post("http://localhost:5000/signup", {
@@ -115,13 +115,9 @@ export default {
           email: this.email,
         })
         .then((res) => {
-          if (!res.data.length) {
-            alert("로그인 실패");
-          } else {
-            this.setInfo(res.data);
-            alert("회원가입에 성공하셨습니다.");
-            router.push("/");
-          }
+          this.setInfo(res.data);
+          alert("회원가입에 성공하셨습니다.");
+          router.push("/setting");
         })
         .catch((err) => {
           console.log(err);

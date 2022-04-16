@@ -4,18 +4,20 @@ const pool = require("../db/pool");
 const sql = require("../query/signin");
 
 // 로그인
-
-/* GET users listing. */
 router.get("/", async (req, res, next) => {
   try {
-    const result = await pool.query(sql.getChurch, [req.body.id, req.body.pw]);
+    const result = await pool.query(sql.getChurch, [
+      req.query.id,
+      req.query.pw,
+    ]);
+
     return res.json(result[0]);
   } catch (err) {
     return res.status(500).json(err);
   }
 });
 
-/* GET users listing. */
+//회원가입
 router.post("/", async (req, res, next) => {
   try {
     //console.log(req.body);

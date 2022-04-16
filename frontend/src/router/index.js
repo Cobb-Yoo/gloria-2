@@ -79,6 +79,11 @@ const routes = [
     name: "Signup",
     component: () => import("../views/sign/signup.vue"),
   },
+  {
+    path: "/setting",
+    name: "Setting",
+    component: () => import("../views/sign/setting.vue"),
+  },
 ];
 
 const router = new VueRouter({

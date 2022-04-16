@@ -2,7 +2,7 @@
   <v-container>
     <v-row justify="center">
       <v-col cols="10" align="center">
-        <v-card align="center">
+        <v-card align="center" class="mb-5">
           <v-row class="ma-0">
             <v-card-title> 헌금입력 </v-card-title>
           </v-row>
@@ -49,19 +49,21 @@
             </v-col>
           </v-row>
 
-          <v-btn @click="check()" class="mb-3"> dd </v-btn>
+          <v-btn @click="check()" class="mb-3"> 입력 </v-btn>
         </v-card>
+      </v-col>
 
-        <v-simple-table height="600px">
+      <v-col cols="10" align="center">
+        <v-simple-table fixed-header height="500px">
           <template v-slot:default>
             <thead>
               <tr>
-                <td>순서</td>
-                <td>날짜</td>
-                <td>이름</td>
-                <td>헌금</td>
-                <td>금액</td>
-                <td>수정</td>
+                <th>순서</th>
+                <th>날짜</th>
+                <th>이름</th>
+                <th>헌금</th>
+                <th>금액</th>
+                <th>수정</th>
               </tr>
             </thead>
             <tbody>
@@ -84,7 +86,7 @@
       </v-col>
     </v-row>
 
-    <v-dialog v-model="dialog" width="550">
+    <!-- <v-dialog v-model="dialog" width="550">
       <v-card>
         <v-card-title class="text-h5 grey lighten-2">
           데이터 수정
@@ -121,7 +123,7 @@
           <v-btn color="red" text @click="dialog = false"> 취소 </v-btn>
         </v-card-actions>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
   </v-container>
 </template>
 

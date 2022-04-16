@@ -10,14 +10,15 @@ router.post("/", async (req, res, next) => {
   try {
     //console.log(req.body);
     //return res.status(200);
-    const result = await pool.query(sql.postChurch, [
+    await pool.query(sql.postChurch, [
       req.body.id,
       req.body.pw,
       req.body.name,
       req.body.loc,
       req.body.email,
     ]);
-    return res.json(result[0]);
+
+    return res.send("회원가입되었습니다.");
   } catch (err) {
     return res.status(500).json(err);
   }
