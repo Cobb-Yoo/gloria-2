@@ -34,8 +34,8 @@
         ></v-text-field>
 
         <v-radio-group v-model="gender" row>
-          <v-radio label="남자" value="남자"></v-radio>
-          <v-radio label="여자" value="여자"></v-radio>
+          <v-radio label="남자" value="0"></v-radio>
+          <v-radio label="여자" value="1"></v-radio>
         </v-radio-group>
 
         <v-btn @click="check()"> 추가하기 </v-btn>
@@ -92,6 +92,8 @@ export default {
         region: this.region,
         age: this.age,
       };
+
+      console.log(data);
 
       this.setSaint(data);
 
