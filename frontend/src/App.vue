@@ -18,7 +18,9 @@
     <v-navigation-drawer app v-model="drawer">
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="text-h6"> Application </v-list-item-title>
+          <v-list-item-title class="text-h6">
+            {{ info[0].NAME }}
+          </v-list-item-title>
           <v-list-item-subtitle> subtext </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -142,7 +144,7 @@ export default {
     ],
   }),
   methods: {
-    ...mapActions(["setInfo"]),
+    ...mapActions(["setInfo", ""]),
     signout() {
       this.setInfo("");
     },
