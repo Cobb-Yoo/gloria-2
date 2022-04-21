@@ -83,7 +83,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setSaint"]),
+    ...mapActions(["setSaint", "getSaint"]),
     check() {
       const data = {
         name: this.name,
@@ -110,6 +110,7 @@ export default {
   computed: {
     ...mapGetters({ saintList: "getSaint" }),
   },
+  created: {},
 };
 </script>
 

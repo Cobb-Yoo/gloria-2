@@ -24,4 +24,17 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.get("/", async (req, res, next) => {
+  try {
+    // console.log(req.body);
+
+    const data = await pool.query(sql.getSaint, [req.query.chr_id]);
+    console.log(data);
+
+    return res.json(data);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+
 module.exports = router;
