@@ -46,6 +46,19 @@ const saintStore = {
 
       commit("setStateSaint", data);
     },
+
+    initSaintList() {
+      //initSaintList({ commit }) {
+      var data = axios
+        .get("http://localhost:5000/saint", {})
+        .then(() => {
+          console.log("적재완료 굳");
+        })
+        .catch();
+
+      console.log(data[0]);
+      //commit("setStateSaint", data);
+    },
   },
   getters: {
     getSaint: (state) => {

@@ -29,7 +29,7 @@ router.get("/", async (req, res, next) => {
     // console.log(req.body);
 
     const data = await pool.query(sql.getSaint, [req.query.chr_id]);
-    console.log(data);
+    //console.log(data[0]);
 
     return res.json(data);
   } catch (err) {

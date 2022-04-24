@@ -65,6 +65,8 @@
           </tbody>
         </table>
       </v-col>
+
+      <v-btn @click="initSaintList()"> 가져오기</v-btn>
     </v-row>
   </v-container>
 </template>
@@ -83,7 +85,8 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setSaint", "getSaint"]),
+    ...mapActions(["setSaint"], ["initSaintList"]),
+    //...mapActions(["setSaint"]),
     check() {
       const data = {
         name: this.name,
