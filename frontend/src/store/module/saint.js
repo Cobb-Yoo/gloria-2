@@ -8,6 +8,13 @@ const saintStore = {
     setStateSaint(state, payload) {
       state.saint.push(payload);
     },
+    setStateSaintList(state, payload) {
+      console.log("hello world");
+
+      for (var i = 0; i < payload.length; i++) {
+        state.saint.push(payload[i]);
+      }
+    },
   },
   actions: {
     setSaint({ commit }, payload) {
@@ -47,21 +54,22 @@ const saintStore = {
       commit("setStateSaint", data);
     },
 
-    initSaintList() {
+    getSaintList({ commit }) {
       //initSaintList({ commit }) {
-      var data = axios
-        .get("http://localhost:5000/saint", {})
-        .then(() => {
-          console.log("적재완료 굳");
+      axios
+        .get("http://localhost:5000/saint")
+        .then((res) => {
+          //console.log(res.data[0]);
+
+          commit("setStateSaintList", res.data[0]);
         })
         .catch();
 
-      console.log(data[0]);
       //commit("setStateSaint", data);
     },
   },
   getters: {
-    getSaint: (state) => {
+    getStateSaint: (state) => {
       return state.saint;
     },
   },

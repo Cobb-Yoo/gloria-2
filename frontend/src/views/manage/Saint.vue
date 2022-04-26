@@ -52,12 +52,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="saint in saintList" :key="saint.id">
-              <td>{{ saint.name }}</td>
-              <td>{{ saint.position }}</td>
-              <td>{{ saint.region }}</td>
-              <td>{{ saint.age }}</td>
-              <td>{{ saint.gender }}</td>
+            <tr v-for="saint in saintList" :key="saint.TAB_ID">
+              <td>{{ saint.NAME }}</td>
+              <td>{{ saint.POSITION }}</td>
+              <td>{{ saint.REGION }}</td>
+              <td>{{ saint.AGE }}</td>
+              <td v-if="saint.GENDER == 0">남자</td>
+              <td v-else>여자</td>
               <td>
                 <v-btn @click="editting(saint.id)"> 수정 </v-btn>
               </td>
@@ -66,7 +67,7 @@
         </table>
       </v-col>
 
-      <v-btn @click="initSaintList()"> 가져오기</v-btn>
+      <!-- <v-btn @click="initSaintList()"> 가져오기</v-btn> -->
     </v-row>
   </v-container>
 </template>
@@ -85,8 +86,8 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setSaint"], ["initSaintList"]),
-    //...mapActions(["setSaint"]),
+    //...mapActions(["setSaint"], ["initSaintList"]),
+    ...mapActions(["setSaint", "getSaintList"]),
     check() {
       const data = {
         name: this.name,
@@ -111,9 +112,11 @@ export default {
     },
   },
   computed: {
-    ...mapGetters({ saintList: "getSaint" }),
+    ...mapGetters({ saintList: "getStateSaint" }),
   },
-  created: {},
+  created() {
+    this.getSaintList();
+  },
 };
 </script>
 
