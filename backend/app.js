@@ -24,11 +24,13 @@ const userRouter = require("./routes/users");
 const signinRouter = require("./routes/signin");
 const signupRouter = require("./routes/signup");
 const saintRouter = require("./routes/saint");
+const regionRouter = require("./routes/region");
 
 // routes
 app.use("/", userRouter);
 app.use("/signin", signinRouter);
 app.use("/signup", signupRouter);
 app.use("/saint", saintRouter);
+app.use("/region", regionRouter);
 
 module.exports = app;

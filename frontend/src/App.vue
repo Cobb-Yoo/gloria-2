@@ -144,7 +144,7 @@ export default {
     ],
   }),
   methods: {
-    ...mapActions(["setInfo", "getSaintList"]),
+    ...mapActions(["setInfo", "getSaintList", "getRegionList"]),
     signout() {
       this.setInfo("");
     },
@@ -156,6 +156,7 @@ export default {
   },
   created() {
     this.getSaintList();
+    this.getRegionList();
   },
 };
 </script>

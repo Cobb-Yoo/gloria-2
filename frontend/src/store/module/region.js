@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const region = {
   state: {
     region: [],
@@ -6,19 +8,42 @@ const region = {
     setStateRegion(state, payload) {
       state.region.push(payload);
     },
+    setStateRegionList(state, payload) {
+      for (var i = 0; i < payload.length; i++) {
+        state.region.push(payload[i]);
+      }
+    },
   },
   actions: {
-    setRegion({ commit, state }, payload) {
+    setRegion({ commit }, payload) {
+      console.log(payload);
+
       const data = {
-        id: state.region.length,
-        name: payload,
+        NAME: payload,
       };
+
+      axios
+        .post("http://localhost:5000/region", {
+          name: payload,
+        })
+        .then(() => {
+          console.log("적재완료 굳");
+        })
+        .catch();
 
       commit("setStateRegion", data);
     },
+    getRegionList({ commit }) {
+      axios
+        .get("http://localhost:5000/region")
+        .then((res) => {
+          commit("setStateRegionList", res.data[0]);
+        })
+        .catch();
+    },
   },
   getters: {
-    getRegion: (state) => {
+    getStateRegion: (state) => {
       return state.region;
     },
   },

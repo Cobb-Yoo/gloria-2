@@ -9,8 +9,6 @@ const saintStore = {
       state.saint.push(payload);
     },
     setStateSaintList(state, payload) {
-      console.log("hello world");
-
       for (var i = 0; i < payload.length; i++) {
         state.saint.push(payload[i]);
       }
@@ -55,17 +53,12 @@ const saintStore = {
     },
 
     getSaintList({ commit }) {
-      //initSaintList({ commit }) {
       axios
         .get("http://localhost:5000/saint")
         .then((res) => {
-          //console.log(res.data[0]);
-
           commit("setStateSaintList", res.data[0]);
         })
         .catch();
-
-      //commit("setStateSaint", data);
     },
   },
   getters: {
