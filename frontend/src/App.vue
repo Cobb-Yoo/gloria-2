@@ -149,6 +149,7 @@ export default {
       "getSaintList",
       "getRegionList",
       "getPositionList",
+      "getTeamList",
     ]),
     signout() {
       this.setInfo("");
@@ -163,6 +164,7 @@ export default {
     this.getSaintList();
     this.getRegionList();
     this.getPositionList();
+    this.getTeamList();
   },
 };
 </script>

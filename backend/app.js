@@ -26,6 +26,7 @@ const signupRouter = require("./routes/signup");
 const saintRouter = require("./routes/saint");
 const regionRouter = require("./routes/region");
 const positionRouter = require("./routes/position");
+const teamRouter = require("./routes/team");
 
 // routes
 app.use("/", userRouter);
@@ -34,5 +35,6 @@ app.use("/signup", signupRouter);
 app.use("/saint", saintRouter);
 app.use("/region", regionRouter);
 app.use("/position", positionRouter);
+app.use("/team", teamRouter);
 
 module.exports = app;
