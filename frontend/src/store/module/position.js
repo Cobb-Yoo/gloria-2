@@ -6,7 +6,7 @@ const position = {
   },
   mutations: {
     setStatePosition(state, payload) {
-      state.position.push(payload);
+      state.position.unshift(payload);
     },
     setStatePositionList(state, payload) {
       for (var i = 0; i < payload.length; i++) {

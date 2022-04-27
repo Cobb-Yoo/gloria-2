@@ -6,7 +6,7 @@ const region = {
   },
   mutations: {
     setStateRegion(state, payload) {
-      state.region.push(payload);
+      state.region.unshift(payload);
     },
     setStateRegionList(state, payload) {
       for (var i = 0; i < payload.length; i++) {

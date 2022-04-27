@@ -6,7 +6,7 @@ const saintStore = {
   },
   mutations: {
     setStateSaint(state, payload) {
-      state.saint.push(payload);
+      state.saint.unshift(payload);
     },
     setStateSaintList(state, payload) {
       for (var i = 0; i < payload.length; i++) {
