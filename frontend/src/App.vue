@@ -144,7 +144,7 @@ export default {
     ],
   }),
   methods: {
-    ...mapActions(["setInfo", ""]),
+    ...mapActions(["setInfo", "getSaintList"]),
     signout() {
       this.setInfo("");
     },
@@ -153,6 +153,9 @@ export default {
     ...mapGetters({
       info: "getInfo",
     }),
+  },
+  created() {
+    this.getSaintList();
   },
 };
 </script>

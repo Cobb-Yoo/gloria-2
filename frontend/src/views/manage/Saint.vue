@@ -87,7 +87,7 @@ export default {
   },
   methods: {
     //...mapActions(["setSaint"], ["initSaintList"]),
-    ...mapActions(["setSaint", "getSaintList"]),
+    ...mapActions(["setSaint"]),
     check() {
       const data = {
         name: this.name,
@@ -113,9 +113,6 @@ export default {
   },
   computed: {
     ...mapGetters({ saintList: "getStateSaint" }),
-  },
-  created() {
-    this.getSaintList();
   },
 };
 </script>
