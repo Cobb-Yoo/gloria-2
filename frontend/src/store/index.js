@@ -114,7 +114,6 @@ export default new Vuex.Store({
       commit("setStateExpenLeafList", data);
     },
   },
-  getters: {},
   modules: {
     saintStore,
     expenditureStore,

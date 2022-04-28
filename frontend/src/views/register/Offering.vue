@@ -12,7 +12,7 @@
                 label="이름"
                 v-model="name"
                 :items="saintList"
-                item-text="name"
+                item-text="NAME"
                 item-value="name"
                 id="name_auto_complete"
               >
@@ -140,8 +140,6 @@ export default {
       dialog: false,
       dialogData: [],
       offeringValueList: ["1000", "2000", "5000", "10000", "50000", "100000"],
-      testAcols: 4,
-      testBcols: 6,
     };
   },
   methods: {
@@ -187,7 +185,7 @@ export default {
   computed: {
     ...mapGetters({
       offeringList: "getOffering",
-      saintList: "getSaint",
+      saintList: "getStateSaint",
     }),
   },
 };

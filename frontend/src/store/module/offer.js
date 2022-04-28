@@ -2,7 +2,6 @@ const offer = {
   state: {
     offer: [],
     offering: [],
-    quick_offering: [],
   },
   mutations: {
     setStateOffer(state, payload) {
@@ -10,9 +9,6 @@ const offer = {
     },
     setStateOffering(state, payload) {
       state.offering.push(payload);
-    },
-    setStateQuickOffering(state, payload) {
-      state.quick_offering.push(payload);
     },
   },
   actions: {
@@ -22,8 +18,6 @@ const offer = {
         name: payload.name,
         quick: payload.quick,
       };
-
-      console.log(data);
 
       commit("setStateOffer", data);
     },
@@ -36,20 +30,7 @@ const offer = {
         date: payload.date,
       };
 
-      console.log(data);
-
       commit("setStateOffering", data);
-    },
-    setQuickOffering({ commit, state }, payload) {
-      const data = {
-        id: state.quick_offering.length,
-        name: payload.name,
-        quick: payload.quick,
-      };
-
-      console.log(this.quick_offering);
-
-      commit("setStateQuickOffering", data);
     },
   },
   getters: {
@@ -58,9 +39,6 @@ const offer = {
     },
     getOffering: (state) => {
       return state.offering;
-    },
-    getQuickOffering: (state) => {
-      return state.offering.find((offering) => offering.quick == true);
     },
   },
 };
