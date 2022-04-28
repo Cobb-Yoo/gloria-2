@@ -1,38 +1,50 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col cols="8">
-        <v-card>
-          <v-card-title> 구역 등록 하기 </v-card-title>
-          <v-card-subtitle> </v-card-subtitle>
+      <v-col cols="6" align="center">
+        <v-card align="center" class="mb-5">
+          <v-row class="ma-0">
+            <v-card-title> 구역 등록 하기 </v-card-title>
+          </v-row>
+
+          <v-col>
+            <v-text-field
+              label="구역 이름"
+              v-model="name"
+              @keyup.enter="addRegion()"
+            ></v-text-field>
+          </v-col>
+
+          <v-btn @click="addRegion()" class="mb-3"> 추가하기 </v-btn>
         </v-card>
+      </v-col>
 
-        <v-text-field
-          label="구역 이름"
-          v-model="name"
-          @keyup.enter="addRegion()"
-        ></v-text-field>
-
-        <v-btn @click="addRegion()"> 추가하기 </v-btn>
-
-        <table>
-          <thead>
-            <tr>
-              <td>구역이름</td>
-              <td>구역장</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="region in regionList" :key="region.TAB_ID">
-              <td>{{ region.NAME }}</td>
-              <td>{{ region.LEADER }}</td>
-              <td>
-                <v-btn @click="editting(region.TAB_ID)"> 수정 </v-btn>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <v-col cols="6" align="center">
+        <v-simple-table fixed-header height="800px">
+          <template v-slot:default>
+            <thead>
+              <tr>
+                <th>구역이름</th>
+                <th>구역장</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="region in regionList" :key="region.TAB_ID">
+                <td>{{ region.NAME }}</td>
+                <td>
+                  <span v-if="region.LEADER != null">
+                    {{ region.LEADER }}
+                  </span>
+                  <span> 없음 </span>
+                </td>
+                <td>
+                  <v-btn @click="editting(region.TAB_ID)"> 수정 </v-btn>
+                </td>
+              </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
       </v-col>
     </v-row>
   </v-container>

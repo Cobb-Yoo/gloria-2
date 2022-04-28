@@ -49,7 +49,7 @@
       </v-col>
 
       <v-col cols="6" align="center">
-        <v-simple-table fixed-header height="500px">
+        <v-simple-table fixed-header height="800px">
           <template v-slot:default>
             <thead>
               <tr>
@@ -62,10 +62,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr
-                v-for="saint in saintList.slice().reverse()"
-                :key="saint.TAB_ID"
-              >
+              <tr v-for="saint in saintList" :key="saint.TAB_ID">
                 <td>{{ saint.NAME }}</td>
                 <td>{{ saint.POSITION }}</td>
                 <td>{{ saint.REGION }}</td>

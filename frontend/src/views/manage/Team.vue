@@ -1,33 +1,41 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col cols="8">
-        <v-card>
-          <v-card-title> 부서 등록 하기 </v-card-title>
-          <v-card-subtitle> </v-card-subtitle>
+      <v-col cols="6" align="center">
+        <v-card align="center" class="mb-5">
+          <v-row class="ma-0">
+            <v-card-title> 부서 등록 하기 </v-card-title>
+            <v-card-subtitle> </v-card-subtitle>
+          </v-row>
+
+          <v-col>
+            <v-text-field
+              label="부서 이름"
+              v-model="name"
+              @keyup.enter="addTeam()"
+            ></v-text-field>
+          </v-col>
+          <v-btn @click="addTeam()" class="mb-3"> 추가하기 </v-btn>
         </v-card>
+      </v-col>
 
-        <v-text-field
-          label="부서 이름"
-          v-model="name"
-          @keyup.enter="addTeam()"
-        ></v-text-field>
-
-        <v-btn @click="addTeam()"> 추가하기 </v-btn>
-
-        <table>
-          <thead>
-            <tr>
-              <td>부서이름</td>
-              <td></td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="team in teamList" :key="team.TAB_ID">
-              <td>{{ team.NAME }}</td>
-            </tr>
-          </tbody>
-        </table>
+      <v-col cols="6">
+        <v-simple-table fixed-header height="800px">
+          <template v-slot:default>
+            <thead>
+              <tr>
+                <th>부서이름</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="team in teamList" :key="team.TAB_ID">
+                <td>{{ team.NAME }}</td>
+                <td><v-btn @click="editting(region.TAB_ID)"> 수정 </v-btn></td>
+              </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
       </v-col>
     </v-row>
   </v-container>
