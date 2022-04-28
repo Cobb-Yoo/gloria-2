@@ -1,10 +1,12 @@
 const sign = {
   state: {
     info: {},
+    logined: false,
   },
   mutations: {
     setStateInfo(state, payload) {
       state.info = payload;
+      state.logined = true;
     },
   },
   actions: {
@@ -17,6 +19,9 @@ const sign = {
   getters: {
     getInfo: (state) => {
       return state.info;
+    },
+    getLoginState: (state) => {
+      return state.logined;
     },
   },
 };
