@@ -72,7 +72,7 @@
           </v-list-item>
         </v-list-group>
 
-        <v-list-group>
+        <!-- <v-list-group>
           <template v-slot:activator>
             <v-list-item-title>보고서</v-list-item-title>
           </template>
@@ -91,7 +91,7 @@
               <v-list-item-title>{{ report.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-        </v-list-group>
+        </v-list-group> -->
       </v-list>
     </v-navigation-drawer>
 
@@ -136,12 +136,12 @@ export default {
       { title: "직책 등록", icon: "mdi-image", to: "/manage/position" },
       { title: "부서 등록", icon: "mdi-image", to: "/manage/team" },
     ],
-    reports: [
-      { title: "주간보고서", icon: "mdi-help-box", to: "/report/weekly" },
-      { title: "월간보고서", icon: "mdi-help-box", to: "/report/monthly" },
-      { title: "분기보고서", icon: "mdi-help-box", to: "/report/quarter" },
-      { title: "연간보고서", icon: "mdi-help-box", to: "/report/year" },
-    ],
+    // reports: [
+    //   { title: "주간보고서", icon: "mdi-help-box", to: "/report/weekly" },
+    //   { title: "월간보고서", icon: "mdi-help-box", to: "/report/monthly" },
+    //   { title: "분기보고서", icon: "mdi-help-box", to: "/report/quarter" },
+    //   { title: "연간보고서", icon: "mdi-help-box", to: "/report/year" },
+    // ],
   }),
   methods: {
     ...mapActions([
