@@ -78,6 +78,7 @@
         </v-simple-table>
       </v-col>
 
+      {{ saintList }}
       <!-- <v-btn @click="initSaintList()"> 가져오기</v-btn> -->
     </v-row>
   </v-container>
@@ -108,7 +109,7 @@ export default {
         age: this.age,
       };
 
-      console.log(data);
+      //console.log(data);
 
       this.setSaint(data);
 

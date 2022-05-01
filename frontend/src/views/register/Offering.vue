@@ -160,7 +160,7 @@ export default {
         date: dateString,
       };
 
-      console.log(data);
+      //console.log(data);
 
       if (data.name == "" || data.offering == "" || data.type == "") {
         alert("뭔가 비었습니다");

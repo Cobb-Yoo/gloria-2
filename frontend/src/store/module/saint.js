@@ -6,6 +6,7 @@ const saintStore = {
   },
   mutations: {
     setStateSaint(state, payload) {
+      console.log(payload);
       state.saint.unshift(payload);
     },
     setStateSaintList(state, payload) {
@@ -18,11 +19,11 @@ const saintStore = {
     setSaint({ commit }, payload) {
       const data = {
         //CHR_ID :
-        name: payload.name,
-        position: payload.position,
-        region: payload.region,
-        age: payload.age,
-        gender: payload.gender,
+        NAME: payload.name,
+        POSITION: payload.position,
+        REGION: payload.region,
+        AGE: payload.age,
+        GENDER: payload.gender,
         //PHONE_NUM:
         //FAM_ID:
         //MATE_STAT:
