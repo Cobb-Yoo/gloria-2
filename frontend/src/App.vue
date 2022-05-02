@@ -124,7 +124,7 @@ export default {
       {
         title: "헌금 항목 관리",
         icon: "mdi-view-dashboard",
-        to: "/manage/offering",
+        to: "/manage/offeringType",
       },
       {
         title: "지출 항목 관리",

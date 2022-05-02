@@ -20,9 +20,9 @@ const routes = [
     component: () => import("../views/register/Expenditure.vue"),
   },
   {
-    path: "/manage/offering",
-    name: "manage_Offering",
-    component: () => import("../views/manage/Offering.vue"),
+    path: "/manage/offeringType",
+    name: "manage_OfferingType",
+    component: () => import("../views/manage/OfferingType.vue"),
   },
   {
     path: "/manage/expenditure",

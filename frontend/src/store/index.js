@@ -4,7 +4,8 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 import saintStore from "../store/module/saint";
-import offerStore from "../store/module/offer";
+import offeringStore from "../store/module/offering";
+import offeringTypeStore from "../store/module/offeringType";
 import expenditureStore from "../store/module/expenditure";
 import positionStore from "../store/module/position";
 import regionStore from "../store/module/region";
@@ -18,7 +19,8 @@ export default new Vuex.Store({
   modules: {
     saintStore,
     expenditureStore,
-    offerStore,
+    offeringStore,
+    offeringTypeStore,
     regionStore,
     positionStore,
     teamStore,

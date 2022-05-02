@@ -13,7 +13,7 @@
             <v-text-field
               id="입력"
               label="헌금이름"
-              v-model="offer_name"
+              v-model="name"
               @keyup.enter="check()"
             ></v-text-field>
           </v-col>
@@ -30,9 +30,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="offer in offerList" :key="offer.id">
-                <td>{{ offer.name }}</td>
-                <td @click="editting(offer)">
+              <tr
+                v-for="offeringType in offeringTypeList"
+                :key="offeringType.TAB_ID"
+              >
+                <td>{{ offeringType.NAME }}</td>
+                <td @click="editting(offeringType)">
                   <v-btn> 수정 </v-btn>
                 </td>
               </tr>
@@ -48,12 +51,10 @@
 import { mapActions, mapGetters } from "vuex";
 
 export default {
-  name: "Offering",
+  name: "OfferingType",
   data() {
     return {
-      offer_name: null,
-      quick_offer_name: null,
-      quick: false,
+      name: null,
       dialog: false,
       dialogData: {
         id: null,
@@ -62,14 +63,10 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setOffer"]),
+    ...mapActions(["setOfferingType"]),
     check() {
-      const data = {
-        name: this.offer_name,
-        quick: this.quick,
-      };
-      this.setOffer(data);
-      this.offer_name = "";
+      this.setOfferingType(this.name);
+      this.name = "";
     },
     editting(payload) {
       this.dialogData = payload;
@@ -77,7 +74,9 @@ export default {
     },
   },
   computed: {
-    ...mapGetters({ offerList: "getOffer" }),
+    ...mapGetters({
+      offeringTypeList: "getStateOfferingType",
+    }),
   },
 };
 </script>
