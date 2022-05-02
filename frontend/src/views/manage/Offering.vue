@@ -62,7 +62,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setOffer", "setQuickOffering"]),
+    ...mapActions(["setOffer"]),
     check() {
       const data = {
         name: this.offer_name,
@@ -74,11 +74,6 @@ export default {
     editting(payload) {
       this.dialogData = payload;
       this.dialog = true;
-    },
-    check_qucik() {
-      const data = this.quick_offer_name;
-      this.setQuickOffering(data);
-      this.quick_offer_name = "";
     },
   },
   computed: {
