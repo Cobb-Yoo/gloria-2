@@ -102,7 +102,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   name: "App",
@@ -144,14 +144,6 @@ export default {
     // ],
   }),
   methods: {
-    ...mapActions([
-      "setInfo",
-      "getSaintList",
-      "getRegionList",
-      "getPositionList",
-      "getTeamList",
-      "getOfferingTypeList",
-    ]),
     signout() {
       this.setInfo("");
     },
@@ -161,13 +153,6 @@ export default {
       info: "getInfo",
       logined: "getLoginState",
     }),
-  },
-  created() {
-    this.getSaintList();
-    this.getRegionList();
-    this.getPositionList();
-    this.getTeamList();
-    this.getOfferingTypeList();
   },
 };
 </script>

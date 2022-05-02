@@ -77,8 +77,6 @@
           </template>
         </v-simple-table>
       </v-col>
-
-      {{ saintList }}
       <!-- <v-btn @click="initSaintList()"> 가져오기</v-btn> -->
     </v-row>
   </v-container>

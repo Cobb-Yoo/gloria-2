@@ -50,7 +50,15 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setInfo"]),
+    ...mapActions([
+      "setInfo",
+      "getSaintList",
+      "getRegionList",
+      "getPositionList",
+      "getTeamList",
+      "getOfferingTypeList",
+      "setInfo",
+    ]),
     check() {
       if (this.id != null && this.pw != null) {
         //alert(this.id + this.pw);
@@ -66,6 +74,13 @@ export default {
               alert("로그인 실패");
             } else {
               this.setInfo(res.data);
+
+              this.getSaintList();
+              this.getRegionList();
+              this.getPositionList();
+              this.getTeamList();
+              this.getOfferingTypeList();
+
               router.push("/");
             }
           })
