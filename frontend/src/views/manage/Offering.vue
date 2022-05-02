@@ -1,36 +1,37 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col cols="8">
-        <v-card>
-          <v-card-title> 헌금 종류 추가 </v-card-title>
-          <v-card-subtitle> 헌금 종류에 있는 항목만 </v-card-subtitle>
+      <v-col cols="6" class="center">
+        <v-card align="center" class="mb-5">
+          <v-row class="ma-0">
+            <v-card-title> 헌금 종류 추가 </v-card-title>
+          </v-row>
+          <v-row class="ma-0">
+            <v-card-subtitle> 헌금 종류에 있는 항목만 </v-card-subtitle>
+          </v-row>
+          <v-col>
+            <v-text-field
+              id="입력"
+              label="헌금이름"
+              v-model="offer_name"
+              @keyup.enter="check()"
+            ></v-text-field>
+          </v-col>
         </v-card>
-
-        <v-checkbox id="빠른입력" v-model="quick" label="빠른입력">
-        </v-checkbox>
-        <v-text-field
-          id="입력"
-          label="헌금이름"
-          v-model="offer_name"
-          @keyup.enter="check()"
-        ></v-text-field>
       </v-col>
 
-      <v-col align="center">
-        <v-simple-table>
+      <v-col cols="6" align="center">
+        <v-simple-table fixed-header height="800px">
           <template v-slot:default>
             <thead>
               <tr>
-                <td>헌금 이름</td>
-                <td>빠른 입력</td>
-                <td></td>
+                <th>헌금 이름</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="offer in offerList.slice().reverse()" :key="offer.id">
+              <tr v-for="offer in offerList" :key="offer.id">
                 <td>{{ offer.name }}</td>
-                <td>{{ offer.quick }}</td>
                 <td @click="editting(offer)">
                   <v-btn> 수정 </v-btn>
                 </td>
@@ -111,5 +112,10 @@ th,
 td {
   min-width: 100px;
   padding: 10px 20px;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 </style>
