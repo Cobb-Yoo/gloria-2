@@ -150,6 +150,7 @@ export default {
       "getRegionList",
       "getPositionList",
       "getTeamList",
+      "getOfferingTypeList",
     ]),
     signout() {
       this.setInfo("");
@@ -166,6 +167,7 @@ export default {
     this.getRegionList();
     this.getPositionList();
     this.getTeamList();
+    this.getOfferingTypeList();
   },
 };
 </script>

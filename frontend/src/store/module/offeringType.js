@@ -17,7 +17,7 @@ const offeringType = {
   actions: {
     setOfferingType({ commit }, payload) {
       const data = {
-        NAME: payload.name,
+        NAME: payload,
       };
 
       axios
@@ -30,7 +30,7 @@ const offeringType = {
       commit("setStateOfferingType", data);
     },
 
-    getOfferingType({ commit }) {
+    getOfferingTypeList({ commit }) {
       axios
         .get("http://localhost:5000/offeringType")
         .then((res) => {
