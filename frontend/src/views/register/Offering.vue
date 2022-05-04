@@ -20,11 +20,14 @@
             </v-col>
 
             <v-col>
-              <v-text-field
-                id="offer_text"
-                label="헌금"
-                v-model="type"
-              ></v-text-field>
+              <v-autocomplete
+                label="헌금종류"
+                v-model="name"
+                :items="offeringTypeList"
+                item-text="NAME"
+                item-value="name"
+                id="name_auto_complete"
+              ></v-autocomplete>
             </v-col>
 
             <v-col>
@@ -67,10 +70,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr
-                v-for="offer in offeringList.slice().reverse()"
-                :key="offer.id"
-              >
+              <tr v-for="offer in offeringList" :key="offer.id">
                 <td>{{ offer.id }}</td>
                 <td>{{ offer.date }}</td>
                 <td>{{ offer.name }}</td>
@@ -184,8 +184,9 @@ export default {
   },
   computed: {
     ...mapGetters({
-      offeringList: "getOffering",
+      offeringTypeList: "getStateOfferingType",
       saintList: "getStateSaint",
+      offeringList: "getStateOffering",
     }),
   },
 };
