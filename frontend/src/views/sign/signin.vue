@@ -29,7 +29,9 @@
           <v-row justify="center">
             <span class="mr-4 mb-5" @click="goto('/signup')">Sign Up</span>
             <span class="mr-4 mb-5">|</span>
-            <span class="mb-5"> Password </span>
+            <span class="mr-4 mb-5"> Password </span>
+            <span class="mr-4 mb-5"> | </span>
+            <span class="mb-5" @click="test()"> test </span>
           </v-row>
         </v-card>
       </v-col>
@@ -41,6 +43,7 @@
 import axios from "axios";
 import { mapActions, mapGetters } from "vuex";
 import router from "../../router/index";
+import crypto from "crypto";
 
 export default {
   data() {
@@ -59,6 +62,25 @@ export default {
       "getOfferingTypeList",
       "setInfo",
     ]),
+    test() {
+      console.log("this is test");
+      const ENCRYPTION_KEY = "test";
+      const IV_LENGTH = 16;
+
+      const iv = crypto.randomBytes(IV_LENGTH);
+
+      const cipher = crypto.createCipheriv(
+        "aes-256-cbc",
+        Buffer.from(ENCRYPTION_KEY),
+        iv
+      );
+      const encrypted = cipher.update(this.pw);
+      console.log(
+        iv.toString("hex") +
+          ":" +
+          Buffer.concat([encrypted, cipher.final()]).toString("hex")
+      );
+    },
     check() {
       if (this.id != null && this.pw != null) {
         //alert(this.id + this.pw);
