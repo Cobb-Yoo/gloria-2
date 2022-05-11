@@ -43,7 +43,7 @@
 import axios from "axios";
 import { mapActions, mapGetters } from "vuex";
 import router from "../../router/index";
-import crypto from "crypto";
+//import crypto from "crypto";
 
 export default {
   data() {
@@ -64,22 +64,18 @@ export default {
     ]),
     test() {
       console.log("this is test");
-      const ENCRYPTION_KEY = "test";
-      const IV_LENGTH = 16;
 
-      const iv = crypto.randomBytes(IV_LENGTH);
+      console.log(process.env.VUE_APP_ENCRYPTION_KEY);
+      console.log(`${process.env.VUE_APP_ENCRYPTION_KEY}`);
 
-      const cipher = crypto.createCipheriv(
-        "aes-256-cbc",
-        Buffer.from(ENCRYPTION_KEY),
-        iv
-      );
-      const encrypted = cipher.update(this.pw);
-      console.log(
-        iv.toString("hex") +
-          ":" +
-          Buffer.concat([encrypted, cipher.final()]).toString("hex")
-      );
+      // console.log(
+      //   crypto
+      //     .createHash("sha512")
+      //     .update(process.env.VUE_APP_ENCRYPTION_KEY)
+      //     .digest("base64")
+      // );
+
+      console.log("bye");
     },
     check() {
       if (this.id != null && this.pw != null) {
