@@ -30,8 +30,6 @@
             <span class="mr-4 mb-5" @click="goto('/signup')">Sign Up</span>
             <span class="mr-4 mb-5">|</span>
             <span class="mr-4 mb-5"> Password </span>
-            <span class="mr-4 mb-5"> | </span>
-            <span class="mb-5" @click="test()"> test </span>
           </v-row>
         </v-card>
       </v-col>
@@ -43,7 +41,6 @@
 import axios from "axios";
 import { mapActions, mapGetters } from "vuex";
 import router from "../../router/index";
-//import crypto from "crypto";
 
 export default {
   data() {
@@ -62,21 +59,6 @@ export default {
       "getOfferingTypeList",
       "setInfo",
     ]),
-    test() {
-      console.log("this is test");
-
-      console.log(process.env.VUE_APP_ENCRYPTION_KEY);
-      console.log(`${process.env.VUE_APP_ENCRYPTION_KEY}`);
-
-      // console.log(
-      //   crypto
-      //     .createHash("sha512")
-      //     .update(process.env.VUE_APP_ENCRYPTION_KEY)
-      //     .digest("base64")
-      // );
-
-      console.log("bye");
-    },
     check() {
       if (this.id != null && this.pw != null) {
         //alert(this.id + this.pw);

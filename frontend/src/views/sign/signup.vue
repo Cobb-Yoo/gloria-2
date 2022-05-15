@@ -77,6 +77,7 @@
 import { mapActions } from "vuex";
 import axios from "axios";
 import router from "../../router/index";
+import crypto from "crypto";
 
 export default {
   data() {
@@ -106,10 +107,15 @@ export default {
   methods: {
     ...mapActions(["setInfo"]),
     signin() {
+      const crpytoPW = crypto
+        .createHash("sha512")
+        .update(this.pw)
+        .digest("base64");
+
       axios
         .post("http://localhost:5000/signup", {
           id: this.id,
-          pw: this.pw,
+          pw: crpytoPW,
           name: this.name,
           loc: this.loc,
           email: this.email,
