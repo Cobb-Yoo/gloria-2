@@ -41,8 +41,6 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
-
 export default {
   name: "register_expenditure",
   data() {
@@ -52,7 +50,6 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setExpenditure"]),
     check() {
       const data = {
         name: this.name,
@@ -62,13 +59,7 @@ export default {
       this.setExpenditure(data);
     },
   },
-  computed: {
-    ...mapGetters({
-      positionList: "getPosition",
-      teamList: "getTeam",
-      expenditureList: "getExpenditure",
-    }),
-  },
+  computed: {},
 };
 </script>
 

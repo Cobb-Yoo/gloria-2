@@ -1,53 +1,80 @@
 <template>
   <v-container>
-    <v-row justify="center">
-      <v-col cols="8">
-        {{ expenRootList }}
+    <v-row>
+      <v-col cols="6" align="center">
+        <v-row justify="center">
+          <v-col>
+            <v-card align="center" class="mb-5">
+              <v-row class="ma-0">
+                <v-card-title> 지출 항목 등록 </v-card-title>
+                <v-card-subtitle> </v-card-subtitle>
+              </v-row>
 
-        <v-card>
-          <v-card-title> 지출 항목 등록 </v-card-title>
-          <v-card-subtitle> </v-card-subtitle>
+              <v-col>
+                <v-text-field
+                  label="지출 항목 대분류"
+                  v-model="expenRoot"
+                  append-outer-icon="mdi-send"
+                  @click:append-outer="addExpenRoot"
+                ></v-text-field>
+              </v-col>
+            </v-card>
+          </v-col>
+        </v-row>
 
-          <v-text-field
-            label="지출 항목 대분류"
-            v-model="expenRoot"
-            @keyup.enter="addExpenRoot()"
-          ></v-text-field>
+        <v-row justify="center">
+          <v-col>
+            <v-card align="center" class="mb-5">
+              <v-row class="ma-0">
+                <v-card-title> 지출 입력 </v-card-title>
+                <v-card-subtitle> </v-card-subtitle>
+              </v-row>
 
-          <v-btn @click="addExpenRoot()"> 추가하기 </v-btn>
-        </v-card>
+              <v-col>
+                <v-text-field
+                  label="지출 항목 대분류"
+                  v-model="expenLeaf"
+                  @keyup.enter="addExpenLeaf()"
+                ></v-text-field>
+
+                <v-text-field
+                  label="이름"
+                  v-model="expenLeaf"
+                  @keyup.enter="addExpenLeaf()"
+                ></v-text-field>
+              </v-col>
+
+              <v-btn @click="addExpenLeaf()" class="mb-3"> 추가하기 </v-btn>
+            </v-card>
+          </v-col>
+        </v-row>
       </v-col>
-    </v-row>
 
-    <v-row justify="center">
-      <v-col cols="8">
-        {{ expenLeafList }}
-
-        <v-card>
-          <v-card-title> 지출 세부 항목 등록 </v-card-title>
-          <v-card-subtitle> </v-card-subtitle>
-          <v-text-field
-            label="지출 항목 대분류"
-            v-model="expenLeaf"
-            @keyup.enter="addExpenLeaf()"
-          ></v-text-field>
-
-          <v-text-field
-            label="이름"
-            v-model="expenLeaf"
-            @keyup.enter="addExpenLeaf()"
-          ></v-text-field>
-
-          <v-btn @click="addExpenLeaf()"> 추가하기 </v-btn>
-        </v-card>
-      </v-col>
+      <!-- <v-col cols="6" align="center">
+        <v-simple-table fixed-header height="800px">
+          <template v-slot:default>
+            <thead>
+              <tr>
+                <th>직책이름</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="position in positionList" :key="position.TAB_ID">
+                <td>{{ position.NAME }}</td>
+                <td>
+                  <v-btn @click="editting(region.TAB_ID)"> 수정 </v-btn>
+                </td>
+              </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
+      </v-col> -->
     </v-row>
   </v-container>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
-
 export default {
   name: "Expenditure",
   data() {
@@ -57,22 +84,9 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setExpenRoot", "setExpenLeaf"]),
-    addExpenRoot() {
-      this.setExpenRoot(this.expenRoot);
-      this.expenRoot = "";
-    },
-    addExpenLeaf() {
-      this.setExpenLeaf(this.expenLeaf);
-      this.expenLeaf = "";
-    },
+    addExpenRoot() {},
   },
-  computed: {
-    ...mapGetters({
-      expenRootList: "getExpenRootList",
-      expenLeafList: "getExpenLeafList",
-    }),
-  },
+  computed: {},
 };
 </script>
 
@@ -101,5 +115,10 @@ th,
 td {
   min-width: 100px;
   padding: 10px 20px;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 </style>
