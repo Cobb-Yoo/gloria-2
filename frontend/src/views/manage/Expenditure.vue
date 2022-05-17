@@ -50,6 +50,17 @@
         </v-row>
       </v-col>
 
+      <!-- 
+  --화면에 출력하는 형식은 기존 테이블 형식에서 header를 제외한 형태로 진행하며
+  --CATE_DEPT의 크기만큼 반복해서 들여쓰기를 시행한다.
+  --ex) 
+  --CATE_DEPT = 0
+  --  CATE_DEPT = 1
+  --    CATE_DEPT = 2
+  --      CATE_DEPT = 3  
+
+ -->
+
       <!-- <v-col cols="6" align="center">
         <v-simple-table fixed-header height="800px">
           <template v-slot:default>
