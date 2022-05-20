@@ -135,6 +135,7 @@ export default {
       { title: "구역 등록", icon: "mdi-image", to: "/manage/region" },
       { title: "직책 등록", icon: "mdi-image", to: "/manage/position" },
       { title: "부서 등록", icon: "mdi-image", to: "/manage/team" },
+      { title: "심방 작성", icon: "mdi-image", to: "/manage/invitation" },
     ],
     // reports: [
     //   { title: "주간보고서", icon: "mdi-help-box", to: "/report/weekly" },

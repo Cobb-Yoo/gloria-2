@@ -50,6 +50,11 @@ const routes = [
     component: () => import("../views/manage/Team.vue"),
   },
   {
+    path: "/manage/invitation",
+    name: "Invitation",
+    component: () => import("../views/manage/Invitation.vue"),
+  },
+  {
     path: "/report/monthly",
     name: "Monthly",
     component: () => import("../views/report/Monthly.vue"),
