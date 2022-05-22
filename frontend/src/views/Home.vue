@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row style="height: 1100px" align="center">
+    <v-row style="height: 800px" align="center">
       <v-col align="center">
         <v-card class="vcard" elevation="12" align="center">
           <v-card-title> 개발중인 서비스입니다 </v-card-title>
@@ -12,8 +12,7 @@
           <v-divider class="ma-4"></v-divider>
 
           <v-card-text>
-            <v-row align="center" class="mx-0 cardText" style="height: 600px">
-              <br />
+            <v-row align="center" class="mx-0 cardText" style="height: 400px">
               오픈 이전에는 모든 기능을 무료로 사용할 수 있습니다. <br />
               <br />
               하지만 입력하신 모든 데이터는 언제든지 삭제 될 수 있으며,<br />
@@ -28,13 +27,17 @@
           <v-divider></v-divider>
 
           <v-card-actions>
-            <v-btn color="deep-purple lighten-2" outlined class="ma-2">
-              회원가입
-            </v-btn>
+            <router-link style="text-decoration: none" to="/signup">
+              <v-btn color="deep-purple lighten-2" outlined class="ma-2">
+                회원가입
+              </v-btn>
+            </router-link>
 
-            <v-btn color="deep-purple lighten-2" outlined class="ma-2">
-              로그인
-            </v-btn>
+            <router-link style="text-decoration: none" to="/signin">
+              <v-btn color="deep-purple lighten-2" outlined class="ma-2">
+                로그인
+              </v-btn>
+            </router-link>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -51,7 +54,7 @@ export default {
 <style scoped>
 .vcard {
   width: 1000px;
-  height: 800px;
+  height: 600px;
 }
 .cardText {
   font-size: 1.25rem;

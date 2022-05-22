@@ -64,7 +64,14 @@
                 persistent-hint
               ></v-text-field>
 
-              <v-btn @click="signin()"> 회원가입 </v-btn>
+              <v-btn
+                color="deep-purple lighten-2"
+                outlined
+                class="ma-2"
+                @click="signin()"
+              >
+                회원가입
+              </v-btn>
             </v-col>
           </v-row>
         </v-card>
