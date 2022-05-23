@@ -37,7 +37,6 @@
             v-for="register in registers"
             :key="register.title"
             link
-            @click.stop="drawer = !drawer"
             :to="register.to"
           >
             <v-list-item-icon>
@@ -59,7 +58,6 @@
             v-for="mamage in mamages"
             :key="mamage.title"
             link
-            @click.stop="drawer = !drawer"
             :to="mamage.to"
           >
             <v-list-item-icon>
