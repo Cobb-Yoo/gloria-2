@@ -29,11 +29,13 @@
           <v-row justify="center">
             <span class="mr-4 mb-5" @click="goto('/signup')">Sign Up</span>
             <span class="mr-4 mb-5">|</span>
-            <span class="mr-4 mb-5"> Password </span>
+            <span class="mr-4 mb-5" @click="dialog = true"> Password </span>
           </v-row>
         </v-card>
       </v-col>
     </v-row>
+
+    <Dialog :dialog="dialog" @change="dialogChagne" />
   </v-container>
 </template>
 
@@ -41,12 +43,14 @@
 import axios from "axios";
 import { mapActions, mapGetters } from "vuex";
 import router from "../../router/index";
+import Dialog from "../../components/dialogs/developing.vue";
 
 export default {
   data() {
     return {
       id: null,
       pw: null,
+      dialog: false,
     };
   },
   methods: {
@@ -94,11 +98,17 @@ export default {
     goto(targetName) {
       this.$router.push(targetName);
     },
+    dialogChagne() {
+      this.dialog = false;
+    },
   },
   computed: {
     ...mapGetters({
       info: "getInfo",
     }),
+  },
+  components: {
+    Dialog,
   },
 };
 </script>
