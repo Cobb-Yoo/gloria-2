@@ -79,7 +79,7 @@ export default {
             } else {
               this.setInfo(res.data);
 
-              this.getSaintList();
+              this.getSaintList(res.data[0].TAB_ID);
               this.getRegionList();
               this.getPositionList();
               this.getTeamList();

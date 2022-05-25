@@ -100,6 +100,7 @@ export default {
     ...mapActions(["setSaint"]),
     check() {
       const data = {
+        chrId: this.info[0].TAB_ID,
         name: this.name,
         gender: this.gender,
         position: this.position,
@@ -122,7 +123,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters({ saintList: "getStateSaint" }),
+    ...mapGetters({ saintList: "getStateSaint", info: "getInfo" }),
   },
 };
 </script>

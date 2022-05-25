@@ -18,7 +18,7 @@ const saintStore = {
   actions: {
     setSaint({ commit }, payload) {
       const data = {
-        //CHR_ID :
+        CHR_ID: payload.chrId,
         NAME: payload.name,
         POSITION: payload.position,
         REGION: payload.region,
@@ -34,6 +34,7 @@ const saintStore = {
       axios
         .post("http://localhost:5000/saint", {
           //CHR_ID :
+          chrId: payload.chrId,
           name: payload.name,
           position: payload.position,
           region: payload.region,
@@ -53,13 +54,19 @@ const saintStore = {
       commit("setStateSaint", data);
     },
 
-    getSaintList({ commit }) {
+    getSaintList({ commit }, payload) {
       axios
-        .get("http://localhost:5000/saint")
+        .get("http://localhost:5000/saint", {
+          params: {
+            chrId: payload,
+          },
+        })
         .then((res) => {
           commit("setStateSaintList", res.data[0]);
         })
-        .catch();
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   getters: {

@@ -11,6 +11,7 @@ router.post("/", async (req, res, next) => {
     // console.log(req.body);
 
     await pool.query(sql.postSaint, [
+      req.body.chrId,
       req.body.name,
       req.body.position,
       req.body.region,
@@ -26,10 +27,7 @@ router.post("/", async (req, res, next) => {
 
 router.get("/", async (req, res, next) => {
   try {
-    // console.log(req.body);
-
-    const data = await pool.query(sql.getSaint, [req.query.chr_id]);
-    //console.log(data[0]);
+    const data = await pool.query(sql.getSaint, [req.query.chrId]);
 
     return res.json(data);
   } catch (err) {
