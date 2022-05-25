@@ -26,7 +26,7 @@
 
           <v-divider></v-divider>
 
-          <v-card-actions>
+          <v-card-actions v-if="info.length < 1">
             <router-link style="text-decoration: none" to="/signup">
               <v-btn color="deep-purple lighten-2" outlined class="ma-2">
                 회원가입
@@ -46,8 +46,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   methods: {},
+  computed: {
+    ...mapGetters({ info: "getInfo" }),
+  },
 };
 </script>
 
