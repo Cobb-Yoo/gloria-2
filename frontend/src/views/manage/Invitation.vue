@@ -9,8 +9,8 @@
           </v-row>
 
           <v-col>
-            <v-text-field label="이름"></v-text-field>
-            <v-text-field label="내용"></v-text-field>
+            <v-text-field label="이름" v-model="name"></v-text-field>
+            <v-text-field label="내용" v-model="content"></v-text-field>
           </v-col>
           <v-btn class="mb-3"> 저장 </v-btn>
         </v-card>
@@ -35,7 +35,12 @@
 
 <script>
 export default {
-  data() {},
+  data() {
+    return {
+      name: null,
+      content: null,
+    };
+  },
   methods: {},
   computed: {},
 };
