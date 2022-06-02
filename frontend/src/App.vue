@@ -15,7 +15,7 @@
         <v-btn @click="signout"> SignOut </v-btn>
       </div>
       <div v-else>
-        <router-link to="/signin">
+        <router-link style="text-decoration: none" to="/signin">
           <v-btn> Signin </v-btn>
         </router-link>
       </div>
@@ -169,5 +169,8 @@ body {
 .logo-G {
   color: black;
   font-size: 2em;
+}
+v-btn {
+  text-decoration-line: none;
 }
 </style>
