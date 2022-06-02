@@ -36,7 +36,7 @@
       <v-list dense nav>
         <v-list-group>
           <template v-slot:activator>
-            <v-list-item-title>등록</v-list-item-title>
+            <v-list-item-title>헌금 등록 · 관리</v-list-item-title>
           </template>
 
           <v-list-item
@@ -57,7 +57,7 @@
 
         <v-list-group>
           <template v-slot:activator>
-            <v-list-item-title>관리</v-list-item-title>
+            <v-list-item-title>항목 추가하기</v-list-item-title>
           </template>
 
           <v-list-item
@@ -114,32 +114,32 @@ export default {
     drawer: false,
     registers: [
       {
-        title: "헌금 등록",
+        title: "헌금 등록 · 관리",
         icon: "mdi-view-dashboard",
         to: "/register/offering",
       },
       {
-        title: "지출 등록",
+        title: "지출 등록 · 관리",
         icon: "mdi-view-dashboard",
         to: "/register/expenditure",
       },
+      { title: "심방 작성", icon: "mdi-image", to: "/register/invitation" },
     ],
     mamages: [
       {
-        title: "헌금 항목 관리",
+        title: "헌금 종류 추가",
         icon: "mdi-view-dashboard",
         to: "/manage/offeringType",
       },
       {
-        title: "지출 항목 관리",
+        title: "지출 항목 추가",
         icon: "mdi-view-dashboard",
         to: "/manage/expenditure",
       },
       { title: "성도 등록", icon: "mdi-image", to: "/manage/saint" },
-      { title: "구역 등록", icon: "mdi-image", to: "/manage/region" },
-      { title: "직책 등록", icon: "mdi-image", to: "/manage/position" },
-      { title: "부서 등록", icon: "mdi-image", to: "/manage/team" },
-      { title: "심방 작성", icon: "mdi-image", to: "/manage/invitation" },
+      { title: "구역 추가", icon: "mdi-image", to: "/manage/region" },
+      { title: "직책 추가", icon: "mdi-image", to: "/manage/position" },
+      { title: "부서 추가", icon: "mdi-image", to: "/manage/team" },
     ],
     // reports: [
     //   { title: "주간보고서", icon: "mdi-help-box", to: "/report/weekly" },
