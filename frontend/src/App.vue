@@ -132,8 +132,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "App",
   data: () => ({
@@ -178,8 +177,9 @@ export default {
     // ],
   }),
   methods: {
+    ...mapActions(["clearInfo"]),
     signout() {
-      this.setInfo("");
+      this.clearInfo();
     },
   },
   computed: {

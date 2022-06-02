@@ -8,12 +8,17 @@ const sign = {
       state.info = payload;
       state.logined = true;
     },
+    clearStateInfo(state) {
+      state.info = {};
+      state.logined = false;
+    },
   },
   actions: {
-    setInfo({ commit, state }, payload) {
-      console.log("hello");
-      console.log(state.info);
+    setInfo({ commit }, payload) {
       commit("setStateInfo", payload);
+    },
+    clearInfo({ commit }) {
+      commit("clearStateInfo");
     },
   },
   getters: {
