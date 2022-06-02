@@ -1,6 +1,7 @@
 <template>
   <v-container>
     <v-row justify="center">
+      <!--  -->
       <v-col cols="6" align="center">
         <v-card align="center" class="mb-5">
           <v-row class="ma-0">
@@ -9,10 +10,66 @@
           </v-row>
 
           <v-col>
-            <v-text-field label="이름" v-model="name"></v-text-field>
+            <v-menu
+              ref="menu"
+              v-model="menu"
+              :close-on-content-click="false"
+              :return-value.sync="date"
+              transition="scale-transition"
+              offset-y
+              max-width="500px"
+              min-width="auto"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field
+                  v-model="date"
+                  label="심방날짜"
+                  prepend-icon="mdi-calendar"
+                  readonly
+                  v-bind="attrs"
+                  v-on="on"
+                ></v-text-field>
+              </template>
+
+              <v-date-picker
+                :landscape="true"
+                v-model="date"
+                type="date"
+                :weekday-format="getDay"
+                :header-date-format="getMonth"
+              >
+                <v-btn text color="primary" @click="$refs.menu.save(date)">
+                  OK
+                </v-btn>
+              </v-date-picker>
+            </v-menu>
+
+            <v-autocomplete
+              v-model="user"
+              :items="saintList"
+              outlined
+              dense
+              small-chips
+              label="성도 입력"
+              item-text="NAME"
+              item-value="TAB_ID"
+              multiple
+            >
+              <template v-slot:selection="data">
+                <v-chip
+                  v-bind="data.item"
+                  :input-value="data.selected"
+                  close
+                  @click="data.select"
+                  @click:close="remove(data.item)"
+                >
+                  <span> {{ data.item.NAME }} </span>
+                </v-chip>
+              </template>
+            </v-autocomplete>
             <v-text-field label="내용" v-model="content"></v-text-field>
           </v-col>
-          <v-btn class="mb-3"> 저장 </v-btn>
+          <v-btn class="mb-3" @click="commit"> 저장 </v-btn>
         </v-card>
       </v-col>
 
@@ -34,15 +91,54 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
-      name: null,
+      user: null,
       content: null,
+      date: null,
+      menu: null,
     };
   },
-  methods: {},
-  computed: {},
+  methods: {
+    remove(item) {
+      const index = this.user.indexOf(item.TAB_ID);
+      if (index >= 0) this.user.splice(index, 1);
+    },
+    clear() {
+      this.date = null;
+      this.user = null;
+      this.content = null;
+    },
+    commit() {
+      if (this.date == null || this.user == null || this.content == null) {
+        alert("빈 값이 있습니다.");
+        return;
+      }
+
+      console.log(this.date);
+      console.log(this.user);
+      console.log(this.content);
+      this.clear();
+    },
+    getDay(date) {
+      const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
+      let i = new Date(date).getDay(date);
+      return daysOfWeek[i];
+    },
+    getMonth(date) {
+      const month = new Date(date).getMonth(date) + 1;
+      const year = new Date(date).getFullYear();
+      return year + "  ·  " + month;
+    },
+  },
+  computed: {
+    ...mapGetters({
+      saintList: "getStateSaint",
+    }),
+  },
 };
 </script>
 
