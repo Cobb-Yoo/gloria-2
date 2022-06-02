@@ -34,47 +34,73 @@
       <v-divider></v-divider>
 
       <v-list dense nav>
-        <v-list-group>
-          <template v-slot:activator>
-            <v-list-item-title>헌금 등록 · 관리</v-list-item-title>
-          </template>
-
+        <div v-if="AUTH == 3">
+          <span> 회계 메뉴</span>
+          <hr />
+        </div>
+        <!-- 회계 메뉴 -->
+        <div v-if="AUTH == 3 || AUTH == 2">
           <v-list-item
-            v-for="register in registers"
-            :key="register.title"
+            v-for="item in bookkeeper_list"
+            :key="item.title"
             link
-            :to="register.to"
+            :to="item.to"
           >
             <v-list-item-icon>
-              <v-icon>{{ register.icon }}</v-icon>
+              <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
 
             <v-list-item-content>
-              <v-list-item-title>{{ register.title }}</v-list-item-title>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-        </v-list-group>
+        </div>
 
-        <v-list-group>
-          <template v-slot:activator>
-            <v-list-item-title>항목 추가하기</v-list-item-title>
-          </template>
+        <div v-if="AUTH == 3">
+          <span> 교역자 메뉴</span>
+          <hr />
+        </div>
 
+        <!-- 교역자 메뉴 -->
+        <div v-if="AUTH == 3 || AUTH == 1">
           <v-list-item
-            v-for="mamage in mamages"
-            :key="mamage.title"
+            v-for="item in pastor_list"
+            :key="item.title"
             link
-            :to="mamage.to"
+            :to="item.to"
           >
             <v-list-item-icon>
-              <v-icon>{{ mamage.icon }}</v-icon>
+              <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
 
             <v-list-item-content>
-              <v-list-item-title>{{ mamage.title }}</v-list-item-title>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-        </v-list-group>
+        </div>
+
+        <div v-if="AUTH == 3">
+          <span> 교회 메뉴</span>
+          <hr />
+        </div>
+
+        <!-- 관리자 메뉴 -->
+        <div v-if="AUTH == 3 || AUTH == 0">
+          <v-list-item
+            v-for="item in admin_list"
+            :key="item.title"
+            link
+            :to="item.to"
+          >
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </div>
 
         <!-- <v-list-group>
           <template v-slot:activator>
@@ -111,8 +137,9 @@ import { mapGetters } from "vuex";
 export default {
   name: "App",
   data: () => ({
+    AUTH: 3,
     drawer: false,
-    registers: [
+    bookkeeper_list: [
       {
         title: "헌금 등록 · 관리",
         icon: "mdi-view-dashboard",
@@ -123,9 +150,11 @@ export default {
         icon: "mdi-view-dashboard",
         to: "/register/expenditure",
       },
+    ],
+    pastor_list: [
       { title: "심방 작성", icon: "mdi-image", to: "/register/invitation" },
     ],
-    mamages: [
+    admin_list: [
       {
         title: "헌금 종류 추가",
         icon: "mdi-view-dashboard",
