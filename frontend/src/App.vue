@@ -3,6 +3,12 @@
     <v-app-bar app color="primary" elevation="0">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
+      <router-link to="/" style="text-decoration: none, color:black" center>
+        <div class="logo_container pl-6 pr-6">
+          <strong class="logo-G">GLORIA</strong>
+        </div>
+      </router-link>
+
       <v-spacer></v-spacer>
 
       <div v-if="info.length > 0">
@@ -156,8 +162,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 body {
   overflow: hidden;
+}
+.logo-G {
+  color: black;
+  font-size: 2em;
 }
 </style>
