@@ -74,6 +74,82 @@
       </v-col>
 
       <v-col cols="6">
+        <v-card align="center" class="mb-5" elevation="0">
+          <v-row class="ma-0">
+            <v-card-title> 찾기 </v-card-title>
+            <v-card-subtitle> </v-card-subtitle>
+          </v-row>
+
+          <v-col>
+            <v-menu
+              ref="menu"
+              v-model="startDt"
+              :close-on-content-click="false"
+              :return-value.sync="date"
+              transition="scale-transition"
+              offset-y
+              max-width="500px"
+              min-width="auto"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field
+                  v-model="date"
+                  label="시작"
+                  prepend-icon="mdi-calendar"
+                  readonly
+                  v-bind="attrs"
+                  v-on="on"
+                ></v-text-field>
+              </template>
+
+              <v-date-picker
+                :landscape="true"
+                v-model="endDt"
+                type="date"
+                :weekday-format="getDay"
+                :header-date-format="getMonth"
+              >
+                <v-btn text color="primary" @click="$refs.menu.save(date)">
+                  OK
+                </v-btn>
+              </v-date-picker>
+            </v-menu>
+            <v-menu
+              ref="menu"
+              v-model="menu"
+              :close-on-content-click="false"
+              :return-value.sync="date"
+              transition="scale-transition"
+              offset-y
+              max-width="500px"
+              min-width="auto"
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-text-field
+                  v-model="date"
+                  label="종료"
+                  prepend-icon="mdi-calendar"
+                  readonly
+                  v-bind="attrs"
+                  v-on="on"
+                ></v-text-field>
+              </template>
+
+              <v-date-picker
+                :landscape="true"
+                v-model="date"
+                type="date"
+                :weekday-format="getDay"
+                :header-date-format="getMonth"
+              >
+                <v-btn text color="primary" @click="$refs.menu.save(date)">
+                  OK
+                </v-btn>
+              </v-date-picker>
+            </v-menu>
+          </v-col>
+        </v-card>
+
         <v-simple-table fixed-header height="800px">
           <template v-slot:default>
             <thead>
@@ -100,6 +176,8 @@ export default {
       content: null,
       date: null,
       menu: null,
+      startDt: null,
+      endDt: null,
     };
   },
   methods: {
