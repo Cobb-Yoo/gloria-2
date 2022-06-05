@@ -11,8 +11,8 @@
 
           <v-col>
             <v-menu
-              ref="menu"
-              v-model="menu"
+              ref="menu1"
+              v-model="menu1"
               :close-on-content-click="false"
               :return-value.sync="date"
               transition="scale-transition"
@@ -38,14 +38,14 @@
                 :weekday-format="getDay"
                 :header-date-format="getMonth"
               >
-                <v-btn text color="primary" @click="$refs.menu.save(date)">
+                <v-btn text color="primary" @click="$refs.menu1.save(date)">
                   OK
                 </v-btn>
               </v-date-picker>
             </v-menu>
 
             <v-autocomplete
-              v-model="user"
+              v-model="saintId"
               :items="saintList"
               outlined
               dense
@@ -69,7 +69,7 @@
             </v-autocomplete>
             <v-text-field label="내용" v-model="content"></v-text-field>
           </v-col>
-          <v-btn class="mb-3" @click="commit"> 저장 </v-btn>
+          <v-btn class="mb-3" @click="commit()"> 저장 </v-btn>
         </v-card>
       </v-col>
 
@@ -80,82 +80,108 @@
             <v-card-subtitle> </v-card-subtitle>
           </v-row>
 
-          <v-col>
-            <v-menu
-              ref="menu"
-              v-model="startDt"
-              :close-on-content-click="false"
-              :return-value.sync="date"
-              transition="scale-transition"
-              offset-y
-              max-width="500px"
-              min-width="auto"
-            >
-              <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                  v-model="date"
-                  label="시작"
-                  prepend-icon="mdi-calendar"
-                  readonly
-                  v-bind="attrs"
-                  v-on="on"
-                ></v-text-field>
-              </template>
-
-              <v-date-picker
-                :landscape="true"
-                v-model="endDt"
-                type="date"
-                :weekday-format="getDay"
-                :header-date-format="getMonth"
+          <v-row>
+            <v-col>
+              <v-menu
+                ref="menu2"
+                v-model="menu2"
+                :close-on-content-click="false"
+                :return-value.sync="startDt"
+                transition="scale-transition"
+                offset-y
+                max-width="500px"
+                min-width="auto"
               >
-                <v-btn text color="primary" @click="$refs.menu.save(date)">
-                  OK
-                </v-btn>
-              </v-date-picker>
-            </v-menu>
-            <v-menu
-              ref="menu"
-              v-model="menu"
-              :close-on-content-click="false"
-              :return-value.sync="date"
-              transition="scale-transition"
-              offset-y
-              max-width="500px"
-              min-width="auto"
-            >
-              <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                  v-model="date"
-                  label="종료"
-                  prepend-icon="mdi-calendar"
-                  readonly
-                  v-bind="attrs"
-                  v-on="on"
-                ></v-text-field>
-              </template>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="startDt"
+                    label="시작"
+                    prepend-icon="mdi-calendar"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"
+                    width="250px"
+                  ></v-text-field>
+                </template>
 
-              <v-date-picker
-                :landscape="true"
-                v-model="date"
-                type="date"
-                :weekday-format="getDay"
-                :header-date-format="getMonth"
+                <v-date-picker
+                  :landscape="true"
+                  v-model="startDt"
+                  type="date"
+                  :weekday-format="getDay"
+                  :header-date-format="getMonth"
+                >
+                  <v-btn
+                    text
+                    color="primary"
+                    @click="$refs.menu2.save(startDt)"
+                  >
+                    OK
+                  </v-btn>
+                </v-date-picker>
+              </v-menu>
+            </v-col>
+
+            <v-col>
+              <v-menu
+                ref="menu3"
+                v-model="menu3"
+                :close-on-content-click="false"
+                :return-value.sync="endDt"
+                transition="scale-transition"
+                offset-y
+                max-width="500px"
+                min-width="auto"
               >
-                <v-btn text color="primary" @click="$refs.menu.save(date)">
-                  OK
-                </v-btn>
-              </v-date-picker>
-            </v-menu>
-          </v-col>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="endDt"
+                    label="종료"
+                    prepend-icon="mdi-calendar"
+                    readonly
+                    v-bind="attrs"
+                    v-on="on"
+                  ></v-text-field>
+                </template>
+
+                <v-date-picker
+                  :landscape="true"
+                  v-model="endDt"
+                  type="date"
+                  :weekday-format="getDay"
+                  :header-date-format="getMonth"
+                >
+                  <v-btn text color="primary" @click="$refs.menu3.save(endDt)">
+                    OK
+                  </v-btn>
+                </v-date-picker>
+              </v-menu>
+            </v-col>
+
+            <v-col>
+              <v-autocomplete
+                label="이름"
+                v-model="name"
+                :items="saintList"
+                item-text="NAME"
+                item-value="name"
+                id="name_auto_complete"
+              >
+              </v-autocomplete>
+            </v-col>
+
+            <v-col cols="1">
+              <v-btn @click="search()" class="mb-3"> 확인 </v-btn>
+            </v-col>
+          </v-row>
         </v-card>
 
-        <v-simple-table fixed-header height="800px">
+        <v-simple-table fixed-header height="600px">
           <template v-slot:default>
             <thead>
               <tr>
-                <th>부서이름</th>
-                <th></th>
+                <th>날짜</th>
+                <th>성도이름</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -167,38 +193,47 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   data() {
     return {
-      user: null,
+      saintId: null,
       content: null,
+      menu1: null,
+      menu2: null,
+      menu3: null,
       date: null,
-      menu: null,
       startDt: null,
       endDt: null,
+      name: null,
     };
   },
   methods: {
+    ...mapActions(["getInvitation", "setInvitation"]),
     remove(item) {
-      const index = this.user.indexOf(item.TAB_ID);
-      if (index >= 0) this.user.splice(index, 1);
+      const index = this.saintId.indexOf(item.TAB_ID);
+      if (index >= 0) this.saintId.splice(index, 1);
     },
     clear() {
       this.date = null;
-      this.user = null;
+      this.saintId = null;
       this.content = null;
     },
     commit() {
-      if (this.date == null || this.user == null || this.content == null) {
+      if (this.date == null || this.saintId == null || this.content == null) {
         alert("빈 값이 있습니다.");
         return;
       }
 
-      console.log(this.date);
-      console.log(this.user);
-      console.log(this.content);
+      const data = {
+        chrId: this.info[0].TAB_ID,
+        content: this.content,
+        invitDt: this.date,
+      };
+
+      this.setInvitation(data);
+
       this.clear();
     },
     getDay(date) {
@@ -211,10 +246,31 @@ export default {
       const year = new Date(date).getFullYear();
       return year + "  ·  " + month;
     },
+    search() {
+      if (this.startDt == null || this.endDt == null) {
+        alert("조회 기간을 확인해주세요.");
+        return;
+      }
+
+      if (this.startDt > this.endDt) {
+        alert("조회 기간을 확인해주세요.");
+        return;
+      }
+
+      const data = {
+        startDt: this.startDt,
+        endDt: this.endDt,
+        name: this.name,
+      };
+
+      this.invitationList = this.getInvitation(data);
+    },
   },
   computed: {
     ...mapGetters({
       saintList: "getStateSaint",
+      invitationList: "getStateInvitation",
+      info: "getInfo",
     }),
   },
 };

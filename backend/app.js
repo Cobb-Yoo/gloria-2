@@ -29,6 +29,8 @@ const positionRouter = require("./routes/position");
 const teamRouter = require("./routes/team");
 const offeringRouter = require("./routes/offering");
 const offeringTypeRouter = require("./routes/offeringType");
+const invitationRouter = require("./routes/invitation");
+
 // routes
 app.use("/", userRouter);
 app.use("/signin", signinRouter);
@@ -39,5 +41,6 @@ app.use("/position", positionRouter);
 app.use("/team", teamRouter);
 app.use("/offeringType", offeringTypeRouter);
 app.use("/offering", offeringRouter);
+app.use("/invitation", invitationRouter);
 
 module.exports = app;
