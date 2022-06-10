@@ -30,6 +30,9 @@ router.post("/", async (req, res, next) => {
       req.body.loc,
       req.body.email,
     ]);
+
+    console.log(next);
+
     return res.json(result[0]);
   } catch (err) {
     return res.status(500).json(err);
