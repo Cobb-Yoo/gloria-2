@@ -43,7 +43,6 @@
                 </v-btn>
               </v-date-picker>
             </v-menu>
-
             <v-autocomplete
               v-model="saintId"
               :items="saintList"
@@ -230,6 +229,7 @@ export default {
         chrId: this.info[0].TAB_ID,
         content: this.content,
         invitDt: this.date,
+        saintsId: this.saintId,
       };
 
       this.setInvitation(data);

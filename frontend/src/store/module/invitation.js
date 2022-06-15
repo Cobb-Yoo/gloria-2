@@ -32,14 +32,20 @@ const invitation = {
         INVIT_DT: payload.invitDt,
       };
 
+      //console.log(payload.saintsId);
+
       axios
         .post("http://localhost:5000/invitation", {
           chrId: payload.chrId,
-          contents: payload.contents,
+          contents: payload.content,
           invitDt: payload.invitDt,
+          saintsId: payload.saintsId,
         })
         .then(() => {
           console.log("심방등록 완료");
+        })
+        .catch((e) => {
+          console.error(e);
         });
 
       commit("setStateInvitation", data);
