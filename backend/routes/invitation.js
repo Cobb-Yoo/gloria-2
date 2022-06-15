@@ -22,7 +22,6 @@ router.get("/", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     //return res.status(200);
-<<<<<<< HEAD
     //console.log(req.body.saintsId);
 
     console.log(req.body.saintsId.length);
@@ -45,19 +44,6 @@ router.post("/", async (req, res, next) => {
 
         return res.json(result);
       });
-=======
-    const result = await pool.query(sql.postInvitation, [
-      req.body.id,
-      req.body.pw,
-      req.body.name,
-      req.body.loc,
-      req.body.email,
-    ]);
-
-    console.log(next);
-
-    return res.json(result[0]);
->>>>>>> 2c8739181a3377ed43c599bb10f01b4c26df66d4
   } catch (err) {
     return res.status(500).json(err);
   }
