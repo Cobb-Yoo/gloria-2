@@ -125,7 +125,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-main>
+    <v-main class="main">
       <router-view />
     </v-main>
   </v-app>
@@ -195,9 +195,8 @@ export default {
 body {
   overflow: hidden;
 }
-.logo-G {
-  color: black;
-  font-size: 2em;
+.main {
+  background-color: #f2f2f2;
 }
 v-btn {
   text-decoration-line: none;
