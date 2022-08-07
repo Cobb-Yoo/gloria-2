@@ -1,13 +1,13 @@
 var express = require("express");
 var router = express.Router();
 const pool = require("../db/pool");
-const sql = require("../query/offering");
+const sql = require("../query/offerData");
 
 router.post("/", async (req, res, next) => {
   try {
     //console.log(req.body.name);
 
-    await pool.query(sql.postOffering, [req.body.name]);
+    await pool.query(sql.postOfferData, [req.body.name]);
 
     return res.send(200);
   } catch (err) {
@@ -20,7 +20,7 @@ router.get("/", async (req, res, next) => {
   try {
     // console.log(req.body);
 
-    const data = await pool.query(sql.getOffering, [req.query.chr_id]);
+    const data = await pool.query(sql.getOfferData, [req.query.chr_id]);
     //console.log(data[0]);
 
     return res.json(data);

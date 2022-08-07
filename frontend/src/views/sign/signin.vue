@@ -14,6 +14,7 @@
                 rounded
                 label="ID"
                 v-model="id"
+                @keyup.enter="check()"
               ></v-text-field>
               <v-text-field
                 filled
@@ -54,13 +55,17 @@ export default {
     };
   },
   methods: {
+    test() {
+      this.id = "yhj0105";
+      this.pw = "dlapdlf@2";
+    },
     ...mapActions([
       "setInfo",
       "getSaintList",
       "getRegionList",
       "getPositionList",
       "getTeamList",
-      "getOfferingTypeList",
+      "getOfferCateList",
       "setInfo",
     ]),
     check() {
@@ -83,7 +88,7 @@ export default {
               this.getRegionList();
               this.getPositionList();
               this.getTeamList();
-              this.getOfferingTypeList();
+              this.getOfferCateList();
 
               router.push("/");
             }
@@ -109,6 +114,9 @@ export default {
   },
   components: {
     Dialog,
+  },
+  created() {
+    this.test();
   },
 };
 </script>

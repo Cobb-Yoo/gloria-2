@@ -27,8 +27,8 @@ const saintRouter = require("./routes/saint");
 const regionRouter = require("./routes/region");
 const positionRouter = require("./routes/position");
 const teamRouter = require("./routes/team");
-const offeringRouter = require("./routes/offering");
-const offeringTypeRouter = require("./routes/offeringType");
+const offerDataRouter = require("./routes/offerData");
+const offerCateRouter = require("./routes/offerCate");
 const invitationRouter = require("./routes/invitation");
 
 // routes
@@ -39,8 +39,8 @@ app.use("/saint", saintRouter);
 app.use("/region", regionRouter);
 app.use("/position", positionRouter);
 app.use("/team", teamRouter);
-app.use("/offeringType", offeringTypeRouter);
-app.use("/offering", offeringRouter);
+app.use("/offerData", offerDataRouter);
+app.use("/offerCate", offerCateRouter);
 app.use("/invitation", invitationRouter);
 
 module.exports = app;

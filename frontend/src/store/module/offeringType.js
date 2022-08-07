@@ -1,49 +1,49 @@
 import axios from "axios";
 
-const offeringType = {
+const offerCate = {
   state: {
-    offeringType: [],
+    offerCate: [],
   },
   mutations: {
-    setStateOfferingType(state, payload) {
-      state.offeringType.unshift(payload);
+    setStateOfferCate(state, payload) {
+      state.offerCate.unshift(payload);
     },
-    setStateOfferingTypeList(state, payload) {
+    setStateOfferCateList(state, payload) {
       for (var i = 0; i < payload.length; i++) {
-        state.offeringType.push(payload[i]);
+        state.offerCate.push(payload[i]);
       }
     },
   },
   actions: {
-    setOfferingType({ commit }, payload) {
+    setOfferCate({ commit }, payload) {
       const data = {
         NAME: payload,
       };
 
       axios
-        .post("http://localhost:5000/offeringType", { name: payload })
+        .post("http://localhost:5000/offerCate", { name: payload })
         .then(() => {
           console.log("적재완료 굳");
         })
         .catch();
 
-      commit("setStateOfferingType", data);
+      commit("setStateOfferCate", data);
     },
 
-    getOfferingTypeList({ commit }) {
+    getOfferCateList({ commit }) {
       axios
-        .get("http://localhost:5000/offeringType")
+        .get("http://localhost:5000/offerCate")
         .then((res) => {
-          commit("setStateOfferingTypeList", res.data[0]);
+          commit("setStateOfferCateList", res.data[0]);
         })
         .catch();
     },
   },
   getters: {
-    getStateOfferingType: (state) => {
-      return state.offeringType;
+    getStateOfferCate: (state) => {
+      return state.offerCate;
     },
   },
 };
 
-export default offeringType;
+export default offerCate;

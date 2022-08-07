@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col cols="6" align="center">
+      <v-col cols="4" align="center">
         <v-card align="center" class="mb-5">
           <v-row class="ma-0">
             <v-card-title> 지출 항목 등록 </v-card-title>
@@ -17,62 +17,59 @@
             ></v-text-field>
           </v-col>
         </v-card>
+      </v-col>
+
+      <v-col cols="4" align="center">
         <v-card align="center" class="mb-5">
           <v-row class="ma-0">
-            <v-card-title> 지출 입력 </v-card-title>
+            <v-card-title> 지출 항목 </v-card-title>
             <v-card-subtitle> </v-card-subtitle>
           </v-row>
-
-          <v-col>
-            <v-text-field
-              label="지출 항목 대분류"
-              v-model="expenLeaf"
-              @keyup.enter="addExpenRoot()"
-            ></v-text-field>
-
-            <v-text-field
-              label="이름"
-              v-model="expenLeaf"
-              @keyup.enter="addExpenRoot()"
-            ></v-text-field>
-          </v-col>
 
           <v-btn @click="addExpenRoot()" class="mb-3"> 추가하기 </v-btn>
         </v-card>
 
-        <div class="a" @click="hello">
+        <!-- <div class="a" @click="hello">
           <img src="../../../src/assets/more.png" class="b" />
-        </div>
+        </div> -->
       </v-col>
-      <!-- 
-  --화면에 출력하는 형식은 기존 테이블 형식에서 header를 제외한 형태로 진행하며
-  --CATE_DEPT의 크기만큼 반복해서 들여쓰기를 시행한다.
-  --ex) 
-  --CATE_DEPT = 0
-  --  CATE_DEPT = 1
-  --    CATE_DEPT = 2
-  --      CATE_DEPT = 3  
- -->
+
+      <v-col cols="4" align="center">
+        <v-simple-table fixed-header height="800px">
+          <template v-slot:default>
+            <thead>
+              <tr>
+                <th>부서이름</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="team in teamList" :key="team.TAB_ID">
+                <td>{{ team.NAME }}</td>
+                <td><v-btn @click="editting(region.TAB_ID)"> 수정 </v-btn></td>
+              </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
+      </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "Expenditure",
   data() {
-    return {
-      expenRoot: null, // 소비 종류
-      expenLeaf: null, // 소비 세부
-    };
+    return {};
   },
-  methods: {
-    addExpenRoot() {},
-    hello() {
-      alert("hello world");
-    },
+  methods: {},
+  computed: {
+    ...mapGetters({
+      teamList: "getStateTeam",
+    }),
   },
-  computed: {},
 };
 </script>
 

@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const pool = require("../db/pool");
-const sql = require("../query/offeringType");
+const sql = require("../query/offerCate");
 
 router.post("/", async (req, res, next) => {
   try {
@@ -20,7 +20,7 @@ router.get("/", async (req, res, next) => {
   try {
     // console.log(req.body);
 
-    const data = await pool.query(sql.getOfferingType, [req.query.chr_id]);
+    const data = await pool.query(sql.getOfferCate, [req.query.chr_id]);
     //console.log(data[0]);
 
     return res.json(data);
