@@ -7,7 +7,12 @@ router.post("/", async (req, res, next) => {
   try {
     //console.log(req.body.name);
 
-    await pool.query(sql.postOfferData, [req.body.name]);
+    await pool.query(sql.postOfferData, [
+      req.body.SAINT_NM,
+      req.body.OFFER_NM,
+      req.body.VALUE,
+      req.body.OFFER_DT,
+    ]);
 
     return res.send(200);
   } catch (err) {

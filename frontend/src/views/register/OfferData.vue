@@ -10,7 +10,7 @@
             <v-col>
               <v-autocomplete
                 label="이름"
-                v-model="name"
+                v-model="saintName"
                 :items="saintList"
                 item-text="NAME"
                 item-value="name"
@@ -22,8 +22,8 @@
             <v-col>
               <v-autocomplete
                 label="헌금종류"
-                v-model="name"
-                :items="offeringTypeList"
+                v-model="offerCateName"
+                :items="offerCateList"
                 item-text="NAME"
                 item-value="name"
                 id="name_auto_complete"
@@ -31,7 +31,7 @@
             </v-col>
 
             <v-col>
-              <v-text-field label="금액" v-model="offering"></v-text-field>
+              <v-text-field label="금액" v-model="value"></v-text-field>
             </v-col>
           </v-row>
 
@@ -42,11 +42,11 @@
                 class="quick-chip-field"
               >
                 <v-chip
-                  v-for="offeringValue in offeringValueList"
-                  :key="offeringValue"
-                  @click="clickOffering(offeringValue)"
+                  v-for="offerDataValue in offerDataValueList"
+                  :key="offerDataValue"
+                  @click="clickofferData(offerDataValue)"
                 >
-                  {{ offeringValue }}
+                  {{ offerDataValue }}
                 </v-chip>
               </v-chip-group>
             </v-col>
@@ -70,12 +70,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="offer in offeringList" :key="offer.id">
+              <tr v-for="offer in offerDataList" :key="offer.id">
                 <td>{{ offer.id }}</td>
                 <td>{{ offer.date }}</td>
                 <td>{{ offer.name }}</td>
                 <td>{{ offer.type }}</td>
-                <td>{{ offer.offering }}</td>
+                <td>{{ offer.offerData }}</td>
                 <td>
                   <v-btn @click="editting(offer)"> 수정 </v-btn>
                 </td>
@@ -85,45 +85,6 @@
         </v-simple-table>
       </v-col>
     </v-row>
-
-    <!-- <v-dialog v-model="dialog" width="550">
-      <v-card>
-        <v-card-title class="text-h5 grey lighten-2">
-          데이터 수정
-        </v-card-title>
-
-        <v-simple-table>
-          <thead>
-            <tr>
-              <td>순서</td>
-              <td>이름</td>
-              <td>헌금</td>
-              <td>금액</td>
-              <td>날짜</td>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>{{ dialogData.id }}</td>
-              <td>{{ dialogData.name }}</td>
-              <td>{{ dialogData.type }}</td>
-              <td>{{ dialogData.offering }}</td>
-              <td>{{ dialogData.date }}</td>
-            </tr>
-          </tbody>
-        </v-simple-table>
-
-        <span class="ml-3"> 해당 데이터를 수정하시겠습니까? </span>
-        <v-divider></v-divider>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="dialog = false"> 수정 </v-btn>
-          <v-btn color="red" text @click="dialog = false"> 취소 </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog> -->
   </v-container>
 </template>
 
@@ -134,16 +95,14 @@ export default {
   name: "Home",
   data() {
     return {
-      name: "",
-      offering: "",
-      type: "",
-      dialog: false,
-      dialogData: [],
-      offeringValueList: ["1000", "2000", "5000", "10000", "50000", "100000"],
+      saintName: "",
+      offerCateName: "", // 헌금 종류이름
+      value: "", // 헌금액
+      offerDataValueList: ["1000", "2000", "5000", "10000", "50000", "100000"],
     };
   },
   methods: {
-    ...mapActions(["setOffering"]),
+    ...mapActions(["setOfferData"]),
     check() {
       const today = new Date();
 
@@ -154,23 +113,27 @@ export default {
       const dateString = year + "-" + month + "-" + day;
 
       const data = {
-        name: this.name,
-        offering: this.offering,
-        type: this.type,
-        date: dateString,
+        SAINT_NM: this.saintName,
+        OFFER_NM: this.offerCateName,
+        VALUE: this.value,
+        OFFER_DT: dateString,
       };
 
       //console.log(data);
 
-      if (data.name == "" || data.offering == "" || data.type == "") {
+      if (
+        data.saintName == "" ||
+        data.offerData == "" ||
+        data.offerCateName == ""
+      ) {
         alert("뭔가 비었습니다");
       } else {
-        this.setOffering(data);
+        this.setOfferData(data);
       }
     },
-    clickOffering(payload) {
+    clickofferData(payload) {
       //입력 폼에 해당하는 금액을 셋팅
-      this.offering = payload;
+      this.offerData = payload;
     },
     clickType(payload) {
       //입력 폼에 해당하는 종류를 셋팅
@@ -184,9 +147,9 @@ export default {
   },
   computed: {
     ...mapGetters({
-      offeringTypeList: "getStateOfferingType",
+      offerCateList: "getStateOfferCate",
       saintList: "getStateSaint",
-      offeringList: "getStateOffering",
+      offerDataList: "getStateOfferData",
     }),
   },
 };

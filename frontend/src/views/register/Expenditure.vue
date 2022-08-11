@@ -29,7 +29,10 @@
 
           <v-row>
             <v-col>
-              <v-text-field label="지출 금액" v-model="offering"></v-text-field>
+              <v-text-field
+                label="지출 금액"
+                v-model="offerData"
+              ></v-text-field>
             </v-col>
           </v-row>
 

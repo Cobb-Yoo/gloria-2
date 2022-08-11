@@ -142,7 +142,7 @@ export default {
       {
         title: "헌금 등록 · 관리",
         icon: "mdi-view-dashboard",
-        to: "/register/offering",
+        to: "/register/offerData",
       },
       {
         title: "지출 등록 · 관리",
@@ -157,7 +157,7 @@ export default {
       {
         title: "헌금 종류 추가",
         icon: "mdi-view-dashboard",
-        to: "/manage/offeringType",
+        to: "/manage/offerCate",
       },
       {
         title: "지출 항목 추가",

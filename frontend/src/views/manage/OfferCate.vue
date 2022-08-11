@@ -30,12 +30,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr
-                v-for="offeringType in offeringTypeList"
-                :key="offeringType.TAB_ID"
-              >
-                <td>{{ offeringType.NAME }}</td>
-                <td @click="editting(offeringType)">
+              <tr v-for="offerCate in offerCateList" :key="offerCate.TAB_ID">
+                <td>{{ offerCate.NAME }}</td>
+                <td @click="editting(offerCate)">
                   <v-btn> 수정 </v-btn>
                 </td>
               </tr>
@@ -51,7 +48,7 @@
 import { mapActions, mapGetters } from "vuex";
 
 export default {
-  name: "OfferingType",
+  name: "offerCate",
   data() {
     return {
       name: null,
@@ -63,9 +60,9 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setOfferingType"]),
+    ...mapActions(["setOfferCate"]),
     check() {
-      this.setOfferingType(this.name);
+      this.setofferCate(this.name);
       this.name = "";
     },
     editting(payload) {
@@ -75,7 +72,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      offeringTypeList: "getStateOfferingType",
+      offerCateList: "getStateOfferCate",
     }),
   },
 };

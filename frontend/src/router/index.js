@@ -13,9 +13,9 @@ const routes = [
     },
   },
   {
-    path: "/register/offering",
-    name: "register_Offering",
-    component: () => import("../views/register/Offering.vue"),
+    path: "/register/offerData",
+    name: "register_OfferData",
+    component: () => import("../views/register/OfferData.vue"),
     meta: {
       title: "Gloria - 헌금",
     },
@@ -29,9 +29,9 @@ const routes = [
     },
   },
   {
-    path: "/manage/offeringType",
-    name: "manage_OfferingType",
-    component: () => import("../views/manage/OfferingType.vue"),
+    path: "/manage/offerCate",
+    name: "manage_offerCate",
+    component: () => import("../views/manage/OfferCate.vue"),
     meta: {
       title: "Gloria - 헌금",
     },
