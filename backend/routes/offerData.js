@@ -23,10 +23,8 @@ router.post("/", async (req, res, next) => {
 
 router.get("/", async (req, res, next) => {
   try {
-    // console.log(req.body);
-
-    const data = await pool.query(sql.getOfferData, [req.query.chr_id]);
-    //console.log(data[0]);
+    const data = await pool.query(sql.getOfferData);
+    //const data = await pool.query(sql.getOfferData, [req.query.chr_id]);
 
     return res.json(data);
   } catch (err) {

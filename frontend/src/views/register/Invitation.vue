@@ -183,7 +183,12 @@
                 <th>성도이름</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+              <tr v-for="invitation in invitationList" :key="invitation.id">
+                <td>{{ invitation.INVIT_DT }}</td>
+                <td>{{ invitation.CONTENTS }}</td>
+              </tr>
+            </tbody>
           </template>
         </v-simple-table>
       </v-col>
@@ -263,7 +268,7 @@ export default {
         name: this.name,
       };
 
-      this.invitationList = this.getInvitation(data);
+      this.getInvitation(data);
     },
   },
   computed: {

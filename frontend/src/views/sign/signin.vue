@@ -67,6 +67,7 @@ export default {
       "getTeamList",
       "getOfferCateList",
       "setInfo",
+      "getOfferData",
     ]),
     check() {
       if (this.id != null && this.pw != null) {
@@ -89,6 +90,7 @@ export default {
               this.getPositionList();
               this.getTeamList();
               this.getOfferCateList();
+              this.getOfferData();
 
               router.push("/");
             }

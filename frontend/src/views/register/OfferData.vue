@@ -61,21 +61,21 @@
           <template v-slot:default>
             <thead>
               <tr>
-                <th>순서</th>
-                <th>날짜</th>
-                <th>이름</th>
-                <th>헌금</th>
+                <th>번호</th>
+                <th>성도이름</th>
+                <th>헌금날짜</th>
+                <th>헌금이름</th>
                 <th>금액</th>
                 <th>수정</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="offer in offerDataList" :key="offer.id">
-                <td>{{ offer.id }}</td>
-                <td>{{ offer.date }}</td>
-                <td>{{ offer.name }}</td>
-                <td>{{ offer.type }}</td>
-                <td>{{ offer.offerData }}</td>
+                <td>{{ offer.TAB_ID }}</td>
+                <td>{{ offer.SAINT_NM }}</td>
+                <td>{{ offer.OFFER_DT }}</td>
+                <td>{{ offer.OFFER_NM }}</td>
+                <td>{{ offer.VALUE }}</td>
                 <td>
                   <v-btn @click="editting(offer)"> 수정 </v-btn>
                 </td>

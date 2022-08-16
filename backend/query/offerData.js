@@ -17,4 +17,9 @@ module.exports = {
       , ?
       , NOW()
       , NOW())`,
+
+  getOfferData: `
+      SELECT * FROM offerData
+
+  `,
 };
