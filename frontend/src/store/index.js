@@ -12,6 +12,8 @@ import regionStore from "../store/module/region";
 import teamStore from "../store/module/team";
 import signStore from "../store/module/sign";
 import invitationStore from "../store/module/invitation";
+import expenDataStore from "../store/module/expenData";
+import expenCateStore from "../store/module/expenCate";
 
 export default new Vuex.Store({
   state: {},
@@ -27,5 +29,7 @@ export default new Vuex.Store({
     teamStore,
     signStore,
     invitationStore,
+    expenDataStore,
+    expenCateStore,
   },
 });

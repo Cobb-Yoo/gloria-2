@@ -1,32 +1,21 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <v-col cols="4" align="center">
+      <v-col cols="6" align="center">
         <v-card align="center" class="mb-5">
           <v-row class="ma-0">
             <v-card-title> 지출 항목 등록 </v-card-title>
-            <v-card-subtitle> </v-card-subtitle>
           </v-row>
-
+          <v-row class="ma-0">
+            <v-card-subtitle> 항목 추가 </v-card-subtitle>
+          </v-row>
           <v-col>
             <v-text-field
-              label="지출 항목 대분류"
-              v-model="expenRoot"
-              append-outer-icon="mdi-send"
-              @click:append-outer="addExpenRoot"
+              label="지출 항목 분류"
+              v-model="expenCateName"
             ></v-text-field>
           </v-col>
-        </v-card>
-      </v-col>
-
-      <v-col cols="4" align="center">
-        <v-card align="center" class="mb-5">
-          <v-row class="ma-0">
-            <v-card-title> 지출 항목 </v-card-title>
-            <v-card-subtitle> </v-card-subtitle>
-          </v-row>
-
-          <v-btn @click="addExpenRoot()" class="mb-3"> 추가하기 </v-btn>
+          <v-btn @click="addExpenCate()" class="mb-3"> 추가하기 </v-btn>
         </v-card>
 
         <!-- <div class="a" @click="hello">
@@ -34,19 +23,18 @@
         </div> -->
       </v-col>
 
-      <v-col cols="4" align="center">
+      <v-col cols="6" align="center">
         <v-simple-table fixed-header height="800px">
           <template v-slot:default>
             <thead>
               <tr>
-                <th>부서이름</th>
+                <th>분류 이름</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="team in teamList" :key="team.TAB_ID">
-                <td>{{ team.NAME }}</td>
-                <td><v-btn @click="editting(region.TAB_ID)"> 수정 </v-btn></td>
+              <tr v-for="expenCate in expenCateList" :key="expenCate.TAB_ID">
+                <td>{{ expenCate.CATE_NAME }}</td>
               </tr>
             </tbody>
           </template>
@@ -57,17 +45,30 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Expenditure",
   data() {
-    return {};
+    return {
+      expenCateName: null,
+    };
   },
-  methods: {},
+  methods: {
+    ...mapActions(["setExpenCate"]),
+    addExpenCate() {
+      const data = {
+        chrId: this.info[0].TAB_ID,
+        cateName: this.expenCateName,
+      };
+
+      this.setExpenCate(data);
+    },
+  },
   computed: {
     ...mapGetters({
-      teamList: "getStateTeam",
+      expenCateList: "getStateExpenCate",
+      info: "getInfo",
     }),
   },
 };

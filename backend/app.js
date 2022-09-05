@@ -30,6 +30,8 @@ const teamRouter = require("./routes/team");
 const offerDataRouter = require("./routes/offerData");
 const offerCateRouter = require("./routes/offerCate");
 const invitationRouter = require("./routes/invitation");
+const expenCateRouter = require("./routes/expenCate");
+//const expenDataRouter = require("./routes/expenData");
 
 // routes
 app.use("/", userRouter);
@@ -42,5 +44,7 @@ app.use("/team", teamRouter);
 app.use("/offerData", offerDataRouter);
 app.use("/offerCate", offerCateRouter);
 app.use("/invitation", invitationRouter);
+app.use("/expenCate", expenCateRouter);
+//app.use("/expenData", expenDataRouter);
 
 module.exports = app;
