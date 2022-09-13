@@ -69,6 +69,7 @@ export default {
       "setInfo",
       "getOfferData",
       "getExpenCateList",
+      "getExpenDataList",
     ]),
     check() {
       if (this.id != null && this.pw != null) {
@@ -93,6 +94,7 @@ export default {
               this.getOfferCateList();
               this.getOfferData();
               this.getExpenCateList(res.data[0].TAB_ID);
+              this.getExpenDataList(res.data[0].TAB_ID);
 
               router.push("/");
             }

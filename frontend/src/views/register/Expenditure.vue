@@ -10,10 +10,10 @@
             <v-col>
               <v-autocomplete
                 label="지출항목"
-                v-model="saintName"
-                :items="saintList"
-                item-text="NAME"
-                item-value="name"
+                v-model="expenCateId"
+                :items="expenCateList"
+                item-text="CATE_NAME"
+                item-value="TAB_ID"
                 id="name_auto_complete"
               >
               </v-autocomplete>
@@ -22,33 +22,16 @@
             <v-col>
               <v-autocomplete
                 label="지출부서"
-                v-model="offerCateName"
-                :items="offerCateList"
+                v-model="teamId"
+                :items="teamList"
                 item-text="NAME"
-                item-value="name"
+                item-value="TAB_ID"
                 id="name_auto_complete"
               ></v-autocomplete>
             </v-col>
 
             <v-col>
               <v-text-field label="금액" v-model="value"></v-text-field>
-            </v-col>
-          </v-row>
-
-          <v-row>
-            <v-col>
-              <v-chip-group
-                active-class="deep-purple--text text--accent-4"
-                class="quick-chip-field"
-              >
-                <v-chip
-                  v-for="offerDataValue in offerDataValueList"
-                  :key="offerDataValue"
-                  @click="clickofferData(offerDataValue)"
-                >
-                  {{ offerDataValue }}
-                </v-chip>
-              </v-chip-group>
             </v-col>
           </v-row>
 
@@ -61,18 +44,19 @@
           <template v-slot:default>
             <thead>
               <tr>
+                <th>항목</th>
                 <th>부서</th>
-                <th>지급날짜</th>
                 <th>지급액</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="offer in offerDataList" :key="offer.id">
-                <td>{{ offer.TAB_ID }}</td>
-                <td>{{ offer.SAINT_NM }}</td>
-                <td>{{ offer.OFFER_DT }}</td>
+              <tr v-for="expenData in expenDataList" :key="expenData.TAB_ID">
+                <td>{{ expenData.CATE_ID }}</td>
+                <td>{{ expenData.TEAM_ID }}</td>
+                <td>{{ expenData.VALUE }}</td>
                 <td>
-                  <v-btn @click="detail(offer)"> 상세 </v-btn>
+                  <v-btn @click="detail(expen)"> 상세 </v-btn>
                 </td>
               </tr>
             </tbody>
@@ -84,18 +68,39 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   name: "register_expenditure",
   data() {
     return {
-      name: null,
-      team: null,
+      expenCateId: null,
+      teamId: null,
+      value: null,
     };
   },
   methods: {
-    check() {},
+    ...mapActions(["setExpenData"]),
+    check() {
+      const data = {
+        CHR_ID: this.info[0].TAB_ID,
+        CATE_ID: this.expenCateId,
+        TEAM_ID: this.teamId,
+        VALUE: this.value,
+      };
+
+      this.setExpenData(data);
+    },
   },
-  computed: {},
+  computed: {
+    ...mapGetters({
+      saintList: "getStateSaint",
+      info: "getInfo",
+      expenCateList: "getStateExpenCate",
+      expenDataList: "getStateExpenData",
+      teamList: "getStateTeam",
+    }),
+  },
 };
 </script>
 

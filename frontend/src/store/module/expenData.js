@@ -16,15 +16,21 @@ const expenDataStore = {
   },
   actions: {
     setExpenData({ commit }, payload) {
+      console.log(payload);
+
       const data = {
         CHR_ID: payload.CHR_ID,
-        CATE_NAME: payload.cateName,
+        CATE_ID: payload.CATE_ID,
+        TEAM_ID: payload.TEAM_ID,
+        VALUE: payload.VALUE,
       };
 
       axios
         .post("http://localhost:5000/expenData", {
-          chrId: payload.CHR_ID,
-          cateName: payload.cateName,
+          CHR_ID: payload.CHR_ID,
+          CATE_ID: payload.CATE_ID,
+          TEAM_ID: payload.TEAM_ID,
+          VALUE: payload.VALUE,
         })
         .then(() => {
           console.log("적재완료 굳");
@@ -38,7 +44,7 @@ const expenDataStore = {
       axios
         .get("http://localhost:5000/expenData", {
           params: {
-            chrId: payload,
+            CHR_ID: payload,
           },
         })
         .then((res) => {
