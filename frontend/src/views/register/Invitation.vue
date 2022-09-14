@@ -4,10 +4,7 @@
       <!--  -->
       <v-col cols="6" align="center">
         <v-card align="center" class="mb-5">
-          <v-row class="ma-0">
-            <v-card-title> 심방보고서 작성 </v-card-title>
-            <v-card-subtitle> </v-card-subtitle>
-          </v-row>
+          <v-card-title> 심방보고서 작성 </v-card-title>
 
           <v-col>
             <v-menu
@@ -70,6 +67,8 @@
           </v-col>
           <v-btn class="mb-3" @click="commit()"> 저장 </v-btn>
         </v-card>
+
+        <v-card align="center" class="mb-5"> 그래프 들어 갈 자리 </v-card>
       </v-col>
 
       <v-col cols="6">
