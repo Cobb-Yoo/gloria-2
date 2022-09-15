@@ -168,6 +168,7 @@ export default {
       { title: "구역 추가", icon: "mdi-image", to: "/manage/region" },
       { title: "직책 추가", icon: "mdi-image", to: "/manage/position" },
       { title: "부서 추가", icon: "mdi-image", to: "/manage/team" },
+      { title: "가족 관계 관리", icon: "mdi-image", to: "/manage/family" },
     ],
     // reports: [
     //   { title: "주간보고서", icon: "mdi-help-box", to: "/report/weekly" },

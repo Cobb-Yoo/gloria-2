@@ -77,6 +77,14 @@ const routes = [
     },
   },
   {
+    path: "/manage/family",
+    name: "manage_Team",
+    component: () => import("../views/manage/Family.vue"),
+    meta: {
+      title: "Gloria - 가족 관계 관리",
+    },
+  },
+  {
     path: "/register/invitation",
     name: "Invitation",
     component: () => import("../views/register/Invitation.vue"),
