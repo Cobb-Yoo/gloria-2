@@ -33,7 +33,7 @@ router.post("/", async (req, res, next) => {
       ])
       .then((result) => {
         for (var i = 0; i < req.body.saintsId.length; i++) {
-          //console.log(req.body.saintsId[i]);
+          console.log(req.body.saintsId[i]);
           pool.query(sql.setSaints, [result[0].insertId, req.body.saintsId[i]]);
         }
 

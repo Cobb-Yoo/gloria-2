@@ -29,7 +29,7 @@ const region = {
         .then(() => {
           console.log("적재완료 굳");
         })
-        .catch();
+        .catch((err) => console.log(err));
 
       commit("setStateRegion", data);
     },

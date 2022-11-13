@@ -220,8 +220,8 @@ export default {
     },
     clear() {
       this.date = null;
-      this.saintId = null;
-      this.content = null;
+      this.saintId = null; // 성도  id
+      this.content = null; // 내용
     },
     commit() {
       if (this.date == null || this.saintId == null || this.content == null) {

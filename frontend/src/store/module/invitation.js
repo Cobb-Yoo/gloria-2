@@ -30,7 +30,7 @@ const invitation = {
         CHR_ID: payload.chrId,
         CONTENTS: payload.content,
         INVIT_DT: payload.invitDt,
-        SATIN_ID: null,
+        SATIN_ID: payload.saintsId,
       };
 
       //console.log(payload.saintsId);
@@ -46,7 +46,7 @@ const invitation = {
           console.log("심방등록 완료");
 
           for (var i = 0; i < payload.saintsId.length; i++) {
-            data.SATIN_ID(payload.saintsId[i]);
+            //data.SATIN_ID(payload.saintsId[i]);
             commit("setStateInvitation", data);
           }
         })
