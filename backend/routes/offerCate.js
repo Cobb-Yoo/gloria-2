@@ -5,9 +5,7 @@ const sql = require("../query/offerCate");
 
 router.post("/", async (req, res, next) => {
   try {
-    //console.log(req.body.name);
-
-    await pool.query(sql.postOfferCate, [req.body.name]);
+    await pool.query(sql.postOfferCate, [req.body.chrId, req.body.name]);
 
     return res.send(200);
   } catch (err) {

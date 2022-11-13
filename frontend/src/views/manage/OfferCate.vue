@@ -32,7 +32,7 @@
             <tbody>
               <tr v-for="offerCate in offerCateList" :key="offerCate.TAB_ID">
                 <td>{{ offerCate.NAME }}</td>
-                <td @click="editting(offerCate)">
+                <td>
                   <v-btn> 수정 </v-btn>
                 </td>
               </tr>
@@ -52,27 +52,23 @@ export default {
   data() {
     return {
       name: null,
-      dialog: false,
-      dialogData: {
-        id: null,
-        name: null,
-      },
     };
   },
   methods: {
     ...mapActions(["setOfferCate"]),
     check() {
-      this.setOfferCate(this.name);
+      const data = {
+        chrId: this.info[0].TAB_ID,
+        name: this.name,
+      };
+      this.setOfferCate(data);
       this.name = "";
-    },
-    editting(payload) {
-      this.dialogData = payload;
-      this.dialog = true;
     },
   },
   computed: {
     ...mapGetters({
       offerCateList: "getStateOfferCate",
+      info: "getInfo",
     }),
   },
 };

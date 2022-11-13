@@ -17,11 +17,14 @@ const offerCate = {
   actions: {
     setOfferCate({ commit }, payload) {
       const data = {
-        NAME: payload,
+        NAME: payload.name,
       };
 
       axios
-        .post("http://localhost:5000/offerCate", { name: payload })
+        .post("http://localhost:5000/offerCate", {
+          chrId: payload.chrId,
+          name: payload.name,
+        })
         .then(() => {
           console.log("적재완료 굳");
         })
@@ -30,9 +33,13 @@ const offerCate = {
       commit("setStateOfferCate", data);
     },
 
-    getOfferCateList({ commit }) {
+    getOfferCateList({ commit }, payload) {
       axios
-        .get("http://localhost:5000/offerCate")
+        .get("http://localhost:5000/offerCate", {
+          params: {
+            chrId: payload,
+          },
+        })
         .then((res) => {
           commit("setStateOfferCateList", res.data[0]);
         })
