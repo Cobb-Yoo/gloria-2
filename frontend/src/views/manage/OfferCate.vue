@@ -62,7 +62,7 @@ export default {
   methods: {
     ...mapActions(["setOfferCate"]),
     check() {
-      this.setofferCate(this.name);
+      this.setOfferCate(this.name);
       this.name = "";
     },
     editting(payload) {

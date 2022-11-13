@@ -7,7 +7,7 @@ router.post("/", async (req, res, next) => {
   try {
     //console.log(req.body.name);
 
-    await pool.query(sql.postofferCate, [req.body.name]);
+    await pool.query(sql.postOfferCate, [req.body.name]);
 
     return res.send(200);
   } catch (err) {
