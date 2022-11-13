@@ -113,13 +113,12 @@ export default {
       const dateString = year + "-" + month + "-" + day;
 
       const data = {
+        CHR_ID: this.info[0].TAB_ID,
         SAINT_NM: this.saintName,
         OFFER_NM: this.offerCateName,
         VALUE: this.value,
         OFFER_DT: dateString,
       };
-
-      //console.log(data);
 
       if (
         data.saintName == "" ||
@@ -150,6 +149,7 @@ export default {
       offerCateList: "getStateOfferCate",
       saintList: "getStateSaint",
       offerDataList: "getStateOfferData",
+      info: "getInfo",
     }),
   },
 };

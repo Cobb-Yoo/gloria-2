@@ -14,6 +14,7 @@ const invitation = {
       axios
         .get("http://localhost:5000/invitation", {
           params: {
+            chrId: payload.chrId,
             startDt: payload.startDt,
             endDt: payload.endDt,
           },

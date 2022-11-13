@@ -9,7 +9,7 @@ module.exports = {
     , INST_DT
     , UP_DT
     ) VALUES (
-      1
+      ?
       , ?
       , ?
       , ?
@@ -19,7 +19,6 @@ module.exports = {
       , NOW())`,
 
   getOfferData: `
-      SELECT * FROM offerData
-
+      SELECT * FROM offerData where CHR_ID = ?
   `,
 };

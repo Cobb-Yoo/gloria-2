@@ -7,6 +7,7 @@ const sql = require("../query/invitation");
 router.get("/", async (req, res, next) => {
   try {
     const result = await pool.query(sql.getInvitation, [
+      req.query.chrId,
       req.query.startDt,
       req.query.endDt,
     ]);

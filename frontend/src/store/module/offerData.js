@@ -32,9 +32,13 @@ const offerData = {
 
       commit("setStateOfferData", data);
     },
-    getOfferData({ commit }) {
+    getOfferData({ commit }, payload) {
       axios
-        .get("http://localhost:5000/offerData")
+        .get("http://localhost:5000/offerData", {
+          params: {
+            chrId: payload,
+          },
+        })
         .then((res) => {
           commit("setStateOfferDataList", res.data[0]);
         })

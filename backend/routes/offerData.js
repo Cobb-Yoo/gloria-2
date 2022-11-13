@@ -8,6 +8,7 @@ router.post("/", async (req, res, next) => {
     //console.log(req.body.name);
 
     await pool.query(sql.postOfferData, [
+      req.body.CHR_ID,
       req.body.SAINT_NM,
       req.body.OFFER_NM,
       req.body.VALUE,
@@ -23,7 +24,7 @@ router.post("/", async (req, res, next) => {
 
 router.get("/", async (req, res, next) => {
   try {
-    const data = await pool.query(sql.getOfferData);
+    const data = await pool.query(sql.getOfferData, [req.query.chrId]);
     //const data = await pool.query(sql.getOfferData, [req.query.chr_id]);
 
     return res.json(data);

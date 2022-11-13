@@ -92,7 +92,7 @@ export default {
               this.getPositionList();
               this.getTeamList();
               this.getOfferCateList();
-              this.getOfferData();
+              this.getOfferData(res.data[0].TAB_ID);
               this.getExpenCateList(res.data[0].TAB_ID);
               this.getExpenDataList(res.data[0].TAB_ID);
 

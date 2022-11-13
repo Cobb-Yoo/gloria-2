@@ -262,6 +262,7 @@ export default {
       }
 
       const data = {
+        chrId: this.info[0].TAB_ID,
         startDt: this.startDt,
         endDt: this.endDt,
         name: this.name,
