@@ -10,7 +10,7 @@ router.post("/", async (req, res, next) => {
   try {
     // console.log(req.body);
 
-    await pool.query(sql.postRegion, [req.body.name]);
+    await pool.query(sql.postRegion, [req.body.chrId, req.body.name]);
 
     return res.send(200);
   } catch (err) {
@@ -21,10 +21,7 @@ router.post("/", async (req, res, next) => {
 // 구역 정보 가져오기
 router.get("/", async (req, res, next) => {
   try {
-    // console.log(req.body);
-
-    const data = await pool.query(sql.getRegion, [req.query.chr_id]);
-    //console.log(data[0]);
+    const data = await pool.query(sql.getRegion, [req.query.chrId]);
 
     return res.json(data);
   } catch (err) {

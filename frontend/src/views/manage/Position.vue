@@ -56,13 +56,18 @@ export default {
   methods: {
     ...mapActions(["setPosition"]),
     addPosition() {
-      this.setPosition(this.name);
+      const data = {
+        chrId: this.info[0].TAB_ID,
+        name: this.name,
+      };
+      this.setPosition(data);
       this.name = "";
     },
   },
   computed: {
     ...mapGetters({
       positionList: "getStatePosition",
+      info: "getInfo",
     }),
   },
 };

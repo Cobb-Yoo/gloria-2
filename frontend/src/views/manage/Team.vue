@@ -53,13 +53,18 @@ export default {
   methods: {
     ...mapActions(["setTeam"]),
     addTeam() {
-      this.setTeam(this.name);
+      const data = {
+        chrId: this.info[0].TAB_ID,
+        name: this.name,
+      };
+      this.setTeam(data);
       this.name = "";
     },
   },
   computed: {
     ...mapGetters({
       teamList: "getStateTeam",
+      info: "getInfo",
     }),
   },
 };

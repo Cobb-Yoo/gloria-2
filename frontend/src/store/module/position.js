@@ -19,12 +19,13 @@ const position = {
       //console.log(payload);
 
       const data = {
-        NAME: payload,
+        NAME: payload.name,
       };
 
       axios
         .post("http://localhost:5000/position", {
-          name: payload,
+          chrId: payload.chrId,
+          name: payload.name,
         })
         .then(() => {
           console.log("적재완료 굳");
@@ -33,9 +34,13 @@ const position = {
 
       commit("setStatePosition", data);
     },
-    getPositionList({ commit }) {
+    getPositionList({ commit }, payload) {
       axios
-        .get("http://localhost:5000/position")
+        .get("http://localhost:5000/position", {
+          params: {
+            chrId: payload,
+          },
+        })
         .then((res) => {
           commit("setStatePositionList", res.data[0]);
         })

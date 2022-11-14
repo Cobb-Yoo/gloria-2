@@ -62,13 +62,18 @@ export default {
   methods: {
     ...mapActions(["setRegion"]),
     addRegion() {
-      this.setRegion(this.name);
+      const data = {
+        chrId: this.info[0].TAB_ID,
+        name: this.name,
+      };
+      this.setRegion(data);
       this.name = "";
     },
   },
   computed: {
     ...mapGetters({
       regionList: "getStateRegion",
+      info: "getInfo",
     }),
   },
 };

@@ -19,12 +19,14 @@ const region = {
       console.log(payload);
 
       const data = {
-        NAME: payload,
+        chrId: payload.chrId,
+        name: payload.name,
       };
 
       axios
         .post("http://localhost:5000/region", {
-          name: payload,
+          chrId: payload.chrId,
+          name: payload.name,
         })
         .then(() => {
           console.log("적재완료 굳");
@@ -33,9 +35,13 @@ const region = {
 
       commit("setStateRegion", data);
     },
-    getRegionList({ commit }) {
+    getRegionList({ commit }, payload) {
       axios
-        .get("http://localhost:5000/region")
+        .get("http://localhost:5000/region", {
+          params: {
+            chrId: payload,
+          },
+        })
         .then((res) => {
           commit("setStateRegionList", res.data[0]);
         })

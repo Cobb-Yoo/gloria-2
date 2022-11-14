@@ -88,9 +88,9 @@ export default {
               this.setInfo(res.data);
 
               this.getSaintList(res.data[0].TAB_ID);
-              this.getRegionList();
-              this.getPositionList();
-              this.getTeamList();
+              this.getRegionList(res.data[0].TAB_ID);
+              this.getPositionList(res.data[0].TAB_ID);
+              this.getTeamList(res.data[0].TAB_ID);
               this.getOfferCateList(res.data[0].TAB_ID);
               this.getOfferData(res.data[0].TAB_ID);
               this.getExpenCateList(res.data[0].TAB_ID);

@@ -10,7 +10,7 @@ router.post("/", async (req, res, next) => {
   try {
     //console.log(req.body.name);
 
-    await pool.query(sql.postTeam, [req.body.name]);
+    await pool.query(sql.postTeam, [req.body.chrId, req.body.name]);
 
     return res.send(200);
   } catch (err) {
@@ -24,7 +24,7 @@ router.get("/", async (req, res, next) => {
   try {
     // console.log(req.body);
 
-    const data = await pool.query(sql.getTeam, [req.query.chr_id]);
+    const data = await pool.query(sql.getTeam, [req.query.chrId]);
     //console.log(data[0]);
 
     return res.json(data);
