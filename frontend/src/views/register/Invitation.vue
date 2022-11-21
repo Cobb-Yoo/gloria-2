@@ -1,85 +1,48 @@
 <template>
   <v-container>
     <v-row justify="center">
-      <!--  -->
+      <!-- 찾는 부분 -->
       <v-col cols="6" align="center">
-        <v-card align="center" class="mb-5">
+        <v-card align="center" class="pa-3 mb-3">
           <v-card-title> 심방보고서 작성 </v-card-title>
 
-          <v-col>
-            <v-menu
-              ref="menu1"
-              v-model="menu1"
-              :close-on-content-click="false"
-              :return-value.sync="date"
-              transition="scale-transition"
-              offset-y
-              max-width="500px"
-              min-width="auto"
-            >
-              <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                  v-model="date"
-                  label="심방날짜"
-                  prepend-icon="mdi-calendar"
-                  readonly
-                  v-bind="attrs"
-                  v-on="on"
-                ></v-text-field>
-              </template>
-
-              <v-date-picker
-                :landscape="true"
-                v-model="date"
-                type="date"
-                :weekday-format="getDay"
-                :header-date-format="getMonth"
-              >
-                <v-btn text color="primary" @click="$refs.menu1.save(date)">
-                  OK
-                </v-btn>
-              </v-date-picker>
-            </v-menu>
+          <v-col cols="8">
             <v-autocomplete
               v-model="saintId"
               :items="saintList"
               outlined
               dense
-              small-chips
-              label="성도 입력"
+              label="성도 이름"
               item-text="NAME"
               item-value="TAB_ID"
-              multiple
             >
-              <template v-slot:selection="data">
-                <v-chip
-                  v-bind="data.item"
-                  :input-value="data.selected"
-                  close
-                  @click="data.select"
-                  @click:close="remove(data.item)"
-                >
-                  <span> {{ data.item.NAME }} </span>
-                </v-chip>
+              <template v-slot:append-outer>
+                <v-btn> 찾기 </v-btn>
               </template>
             </v-autocomplete>
-            <v-text-field label="내용" v-model="content"></v-text-field>
           </v-col>
-          <v-btn class="mb-3" @click="commit()"> 저장 </v-btn>
         </v-card>
 
-        <v-card align="center" class="mb-5"> 그래프 들어 갈 자리 </v-card>
+        <v-subheader class="pa-3"
+          >최근 심방 일자 : <span>{{ dateYm }}</span></v-subheader
+        >
+
+        <v-card align="left" class="pa-3 mb-3" height="300px">
+          <v-card-sub-title> 심방내용 →</v-card-sub-title>
+          <v-textarea autocomplete="email" label="심방내용"></v-textarea>
+        </v-card>
+
+        <v-card align="left" class="pa-3 mb-3" height="250px">
+          <v-card-sub-title> 가족관계도 →</v-card-sub-title>
+        </v-card>
       </v-col>
 
       <v-col cols="6">
         <v-card align="center" class="mb-5" elevation="0">
-          <v-row class="ma-0">
-            <v-card-title> 찾기 </v-card-title>
-            <v-card-subtitle> </v-card-subtitle>
-          </v-row>
+          <v-card-title> 기간으로 찾기 </v-card-title>
 
-          <v-row>
-            <v-col>
+          <v-row class="pa-3">
+            <v-col cols="4">
               <v-menu
                 ref="menu2"
                 v-model="menu2"
@@ -120,7 +83,7 @@
               </v-menu>
             </v-col>
 
-            <v-col>
+            <v-col cols="4">
               <v-menu
                 ref="menu3"
                 v-model="menu3"
@@ -155,20 +118,7 @@
                 </v-date-picker>
               </v-menu>
             </v-col>
-
-            <v-col>
-              <v-autocomplete
-                label="이름"
-                v-model="name"
-                :items="saintList"
-                item-text="NAME"
-                item-value="name"
-                id="name_auto_complete"
-              >
-              </v-autocomplete>
-            </v-col>
-
-            <v-col cols="1">
+            <v-col cols="4">
               <v-btn @click="search()" class="mb-3"> 확인 </v-btn>
             </v-col>
           </v-row>
@@ -179,12 +129,14 @@
             <thead>
               <tr>
                 <th>날짜</th>
-                <th>성도이름</th>
+                <th>내용</th>
+                <th>방법</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="invitation in invitationList" :key="invitation.id">
                 <td>{{ invitation.INVIT_DT }}</td>
+                <td>{{ invitation.CONTENTS }}</td>
                 <td>{{ invitation.CONTENTS }}</td>
               </tr>
             </tbody>
