@@ -40,7 +40,7 @@
       </v-col>
 
       <v-col cols="5" align="center">
-        <v-simple-table fixed-header height="500px">
+        <v-simple-table fixed-header height="800px" round="10">
           <template v-slot:default>
             <thead>
               <tr>
